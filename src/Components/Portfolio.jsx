@@ -7,7 +7,7 @@ import youtube from "../Images /youtube.svg"
 import twitter from "../Images /twitter.svg"
 import facebook from "../Images /facebook.svg"
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Github from "../Images /github.png"
@@ -16,8 +16,6 @@ import Divider from '@material-ui/core/Divider';
 import Typical from 'react-typical'
 import { Figure} from 'react-bootstrap';
 import UserProject from "../Components/userProject"
-import { Parallax} from 'react-parallax';
-
 
 const drawerWidth = 480;
 const useStyles = makeStyles(theme => ({
@@ -26,9 +24,13 @@ const useStyles = makeStyles(theme => ({
     
   },
 }));
+ 
+export default function Portfolio (props) {
 
-export default function Portfolio () {
-   
+  
+//  let state = {
+//     shown: true,
+//   };
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
   
@@ -39,18 +41,15 @@ export default function Portfolio () {
     const handleDrawerClose = () => {
       setOpen(false);
     };  
-    
-
+   
+    console.log(props.data);
         return (
+         <div>  
             <div className="prot">
 
             
                 <img style={{ height: 821 , width: 1441 }} src={pro} alt="Portfolio" /> 
-                <Typical className="textStyle"
-        steps={['Hello', 1000, "Hello I'm", 5000]}
-        loop={Infinity}
-        wrapper="p"
-      />
+                <Typical className="textStyle" steps={['Hello', 1000, "Hello I'm", 5000]}  loop={Infinity}  wrapper="p" />
                 <p className="textStyle1">Ziad Alhumaidan  </p> 
                 <p className="textStyle2">Software Engingeer Full-sack </p> 
 
@@ -114,9 +113,26 @@ export default function Portfolio () {
         </List>
 
       </Drawer>
-    
-      <UserProject/>
+  
+  </div>
+
+  <div className="projectCards"> 
+        {props.data.map( e =>{ 
+        return <UserProject  ele ={e} />})}  
+
+        
+          </div>
+
+      {/* <div>
+				<h2>this.state.shown = {this.state.shown ? "true" : "false"}</h2>
+				<button onClick={() => this.setState({ shown: !this.state.shown })}>Toggle</button>
+			</div> */}
+
   </div>
         );
     
 }
+
+
+
+

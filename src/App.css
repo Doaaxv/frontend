@@ -355,4 +355,11 @@ text-orientation: mixed;
   left: 14%;
   width: 70%;
 }
+.projectCards{
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr;
+  margin-left: 14%;
+  margin-bottom: 4%;
+
+}
 
