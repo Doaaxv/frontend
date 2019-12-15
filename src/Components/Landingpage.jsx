@@ -1,18 +1,18 @@
 import React from 'react'
 import { Parallax} from 'react-parallax';
 import {Spring } from 'react-spring/renderprops'
-import Map from '../Images /homepage-banner-static-map.svg'
-import img1 from "../Images /img1.png"
-import img3 from "../Images /footer.png"
-import img4 from "../Images /freelancer.png"
-import MeetUp from "../Images /MeetUp.png"
+import Map from '../Images/homepage-banner-static-map.svg'
+import img1 from "../Images/img1.png"
+import img3 from "../Images/footer.png"
+import img4 from "../Images/freelancer.png"
+import MeetUp from "../Images/MeetUp.png"
 import {Link} from "react-router-dom"
 import Typical from 'react-typical'
-import Linkedin from "../Images /linkedin.svg"
-import youtube from "../Images /youtube.svg"
-import twitter from "../Images /twitter.svg"
-import facebook from "../Images /facebook.svg"
-import Github from "../Images /github.png"
+import Linkedin from "../Images/linkedin.svg"
+import youtube from "../Images/youtube.svg"
+import twitter from "../Images/twitter.svg"
+import facebook from "../Images/facebook.svg"
+import Github from "../Images/github.png"
 
 import '../App.css';
 import { Card  } from 'react-bootstrap';
