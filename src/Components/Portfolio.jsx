@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom"
-import pro from "../Images /pro.png"
+import pro from "../Images/pro.png"
 import "../App.css"
-import Linkedin from "../Images /linkedin.svg"
-import youtube from "../Images /youtube.svg"
-import twitter from "../Images /twitter.svg"
-import facebook from "../Images /facebook.svg"
+import Linkedin from "../Images/linkedin.svg"
+import youtube from "../Images/youtube.svg"
+import twitter from "../Images/twitter.svg"
+import facebook from "../Images/facebook.svg"
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-import Github from "../Images /github.png"
+import Github from "../Images/github.png"
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Typical from 'react-typical'
