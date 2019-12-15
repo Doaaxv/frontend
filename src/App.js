@@ -1,15 +1,20 @@
 import React from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
 import './App.css';
-import Login from 'Login'
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom"
+import Landingpage from "./Components/Landingpage"
+import SideNav from "./Components/SideNav"
+import Portfolio from "./Components/Portfolio"
 
+// import SideNav from './side-nav/SideNav'
 function App() {
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    <Router>
+    
+     <SideNav/>
+     
+     <Route exact path="/" exact component={Landingpage}/>
+     <Route exact path="/Portfolio" exact component={Portfolio}/>
+    </Router>
   );
 }
 
