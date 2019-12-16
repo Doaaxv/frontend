@@ -1,19 +1,22 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import { Card , Button} from 'react-bootstrap';
 
-export const userProject = () => {
+export const userProject = (props) => {
+
+console.log(props)
     return (
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      (Object.keys(props).includes("ele")) ?
+        (<Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" style={{ width: '18rem' , height: '10rem' }} src={props.ele.image} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+    <Card.Title>{props.ele.title}</Card.Title>
+          <Card.Text>{props.ele.description}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+    <Button variant="primary" > <Link to ={props.ele.github }>  gitHub </Link> </Button>
+    <Button variant="primary"><Link to ={props.ele.link }>  project Link </Link></Button>
         </Card.Body>
-      </Card>
+      </Card>) : "Loading Data...."
     )
 }
 export default userProject;

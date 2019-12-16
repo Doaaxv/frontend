@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import './Atho.css'
 
 const validate = values => {
   const errors = {};

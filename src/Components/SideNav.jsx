@@ -1,6 +1,8 @@
 import React from "react"
 import "../App.css"
 import {Link} from "react-router-dom"
+import Signup from "../Atho/Signup_emp"
+
 class SideNav extends React.Component {
   state = { state: {showNav: false} }
 
@@ -54,7 +56,7 @@ class SideNav extends React.Component {
           <Link className="link" to = "/">home page </Link>
           <Link className="link" to = "/">employeer</Link>
           <Link className="link" to = "/">show job </Link>
-          <Link className="link" to = "/">sign up</Link>
+          <Link className="link" to = "/Signup">sign up</Link>
           
         </div>
       </React.Fragment>
