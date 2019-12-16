@@ -185,6 +185,7 @@
 .free{
   margin-left: 20%;
   margin-top: 5%;
+  margin-bottom: 5%;
   display: grid;
   grid-template-columns: 1fr 1fr ;
   grid-gap: 5%;
@@ -356,9 +357,12 @@ text-orientation: mixed;
   width: 70%;
 }
 .projectCards{
+  position: absolute;
+  grid-gap: 5%;
+  top: 105%;
   display: grid;
   grid-template-columns:  1fr 1fr 1fr;
-  margin-left: 14%;
+  margin-left: 18%;
   margin-bottom: 4%;
 
 }

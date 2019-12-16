@@ -1,21 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component ,  useState ,  useRef, useEffect } from 'react'
+
 import {Link} from "react-router-dom"
-import pro from "../Images /pro.png"
+import pro from "../Images/pro.png"
 import "../App.css"
-import Linkedin from "../Images /linkedin.svg"
-import youtube from "../Images /youtube.svg"
-import twitter from "../Images /twitter.svg"
-import facebook from "../Images /facebook.svg"
+import Linkedin from "../Images/linkedin.svg"
+import youtube from "../Images/youtube.svg"
+import twitter from "../Images/twitter.svg"
+import facebook from "../Images/facebook.svg"
 import clsx from 'clsx';
 import { makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-import Github from "../Images /github.png"
+import Github from "../Images/github.png"
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import Typical from 'react-typical'
 import { Figure} from 'react-bootstrap';
 import UserProject from "../Components/userProject"
+
+
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
+const useMountEffect = (fun) => useEffect(fun, [])
 
 const drawerWidth = 480;
 const useStyles = makeStyles(theme => ({
@@ -27,10 +33,12 @@ const useStyles = makeStyles(theme => ({
  
 export default function Portfolio (props) {
 
+  const myRef = useRef(null)
+
+  // useMountEffect(() => scrollToRef(myRef))
   
-//  let state = {
-//     shown: true,
-//   };
+
+  const [showText, setShowText] = useState(false);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
   
@@ -70,9 +78,14 @@ export default function Portfolio (props) {
                
         <div className="profil">
          <Toolbar  className="tStyle" >
-         
+         {/* setShowText(!showText) */}
          <Link   onClick={handleDrawerOpen} className={clsx( "profileLink")} >About Me  | </Link>
-           <Link   className ="profileLink" to = {UserProject}>  My Projects </Link>
+           <Link   className ="profileLink" onClick={() =>  {setShowText(!showText) 
+            setTimeout(() => {
+              if (!showText){
+              scrollToRef(myRef)
+              }
+            }, 500)  }}  >  My Projects </Link>
         </Toolbar>
         </div>
       
@@ -115,18 +128,16 @@ export default function Portfolio (props) {
       </Drawer>
   
   </div>
-
-  <div className="projectCards"> 
-        {props.data.map( e =>{ 
-        return <UserProject  ele ={e} />})}  
-
+  {/* showText */}
+        {showText &&
         
+        
+        <div ref={myRef} >
+          <div className="projectCards"> 
+            {props.data.map( e =>{ 
+          return <UserProject  ele ={e} />})}  
           </div>
-
-      {/* <div>
-				<h2>this.state.shown = {this.state.shown ? "true" : "false"}</h2>
-				<button onClick={() => this.setState({ shown: !this.state.shown })}>Toggle</button>
-			</div> */}
+          </div>}
 
   </div>
         );

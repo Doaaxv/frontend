@@ -1,18 +1,19 @@
 import React from 'react'
 import { Parallax} from 'react-parallax';
 import {Spring } from 'react-spring/renderprops'
-import Map from '../Images /homepage-banner-static-map.svg'
-import img1 from "../Images /img1.png"
-import img3 from "../Images /footer.png"
-import img4 from "../Images /freelancer.png"
-import MeetUp from "../Images /MeetUp.png"
+import Map from '../Images/homepage-banner-static-map.svg'
+import img1 from "../Images/img1.png"
+import img3 from "../Images/footer.png"
+import img4 from "../Images/freelancer.png"
+import MeetUp from "../Images/MeetUp.png"
 import {Link} from "react-router-dom"
 import Typical from 'react-typical'
-import Linkedin from "../Images /linkedin.svg"
-import youtube from "../Images /youtube.svg"
-import twitter from "../Images /twitter.svg"
-import facebook from "../Images /facebook.svg"
-import Github from "../Images /github.png"
+import Linkedin from "../Images/linkedin.svg"
+import youtube from "../Images/youtube.svg"
+import twitter from "../Images/twitter.svg"
+import facebook from "../Images/facebook.svg"
+import Github from "../Images/github.png"
+import Jobs from "../JobsComponents/JobsList"
 
 import '../App.css';
 import { Card  } from 'react-bootstrap';
@@ -35,15 +36,16 @@ export const Landingpage = () => {
       <div style={{ height: 850 }}>
     
         <div  style={brandStyles}>
-        <Typical
-        steps={['Our all-in-one', 1000, 'Our all-in-one platform gives you everything you need to run your Job!', 500]}
+        <Typical 
+        steps={['Our all-in-one platform', 1500, 'Our all-in-one platform gives you everything you need to run your Job!', 50000]}
         loop={Infinity}
         wrapper="p"
       />
-        <h2>Our all-in-one platform gives you everything you need to run your Job</h2> <br/>
+        <h2>Our all-in-one platform gives you everything you need to run your Job</h2> 
+        <br/>
       <div className="hov"> 
       <Link className="link" to = "/">I want to Hire </Link>
-      <Link className="link1" to = "/">I want to Work </Link>
+      <Link className="link1" to = "/Jobs">I want to Work </Link>
        
       </div>
         
@@ -65,12 +67,12 @@ export const Landingpage = () => {
 
 {/* 1 */}
 
-    <h1 style={styles} >| | |</h1>
+   
     <Parallax  blur={{ min: -1, max: 3 }}>
-      <div style={{ height: 500 }}>
+      <div style={{ height: 660 }}>
 
       <div className="free">
-     <Card style={{ width: '18rem' }}>
+     <Card style={{ width: '18rem' , height: '18rem' }}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
        <Card.Title>Post a job</Card.Title>
@@ -117,7 +119,7 @@ export const Landingpage = () => {
       </div>
     </Parallax>
 
-
+    
     <Parallax bgImage={img4} strength={500}>
       <div style={{ height: 850 }}>
     
@@ -154,7 +156,7 @@ export const Landingpage = () => {
       )}
     >
       <div style={{ height: 800 }}>
-      <p className="copy ">© 2019, The DDW Company. All rights reserved.</p>
+      <p className="copy ">© 2020, The DDW Company. All rights reserved.</p>
       </div>
       <div className="footer">
       <p>Terms & Conditions | Privacy policy</p>
