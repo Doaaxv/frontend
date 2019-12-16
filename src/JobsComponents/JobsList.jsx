@@ -5,9 +5,11 @@ import Autosuggest from 'react-autosuggest';
 import Fade from 'react-reveal/Fade';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './jobs.css'
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
+import Reveal from 'react-reveal/Reveal';
+import { Col, Row, Container, Button } from 'react-bootstrap';
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 import { SliderRail, Handle, Track, Tick } from "./SliderComponent";
+import Jobs from "../Images/jobs.png"
 
 export default class JobsList extends Component {
 
@@ -22,50 +24,50 @@ export default class JobsList extends Component {
             jobs: [{
                 title: "job 1",
                 description: "description 1",
-                price: 50,
+                price: 5000,
                 technologies: ["ruby", "java", "html"]
             },
             {
                 title: "job 2",
                 description: "description 2",
-                price: 20,
+                price: 2000,
                 technologies: ["ruby", "java", "css"]
             },
             {
                 title: "job 3",
                 description: "description 3",
-                price: 100,
+                price: 10000,
                 technologies: ["javascript", "php"]
             },
             {
                 title: "job 4",
                 description: "description 4",
-                price: 150,
+                price: 15000,
                 technologies: ["ruby", "java"]
             }
             ],
             jobFilter: [{
                 title: "job 1",
                 description: "description 1",
-                price: 50,
+                price: 5000,
                 technologies: ["ruby", "java", "html"]
             },
             {
                 title: "job 2",
                 description: "description 2",
-                price: 20,
+                price: 20000,
                 technologies: ["ruby", "java", "css"]
             },
             {
                 title: "job 3",
                 description: "description 3",
-                price: 100,
+                price: 10000,
                 technologies: ["javascript", "php"]
             },
             {
                 title: "job 4",
                 description: "description 4",
-                price: 150,
+                price: 1500,
                 technologies: ["ruby", "java"]
             }
             ],
@@ -227,12 +229,17 @@ export default class JobsList extends Component {
         };
 
         return (
-            <Container>
-                <Row>
+            <Container> 
+ 
+          <h1 className="textBackground"> React Reveal</h1>
+      
+<img  className="imgBackground" style={{ height: 850 }} src={Jobs} alt="Portfolio" /> 
+                
+                <Row >
                     {/* Filter column */}
-                    <Col md={3} style={{ backgroundColor: 'pink' }} >
+                    <Col md={3}  className="filterStyle"  >
                         <br />
-                        <h4>Budget</h4>
+                        <h4>Salary</h4>
 
                         {/* Slider code */}
                         {this.state.sliderHandlesVal.length !== 0 &&
@@ -331,12 +338,8 @@ export default class JobsList extends Component {
                                         renderSuggestion={this.renderSuggestion}
                                         inputProps={inputProps} />
 
-                                    <div className="input-group-append buttonThing">
-                                        <button
-                                            onClick={this.add}
-                                            className="btn btn-outline-success"
-                                            type="button">
-                                            Add Item</button>
+                                    <div className="input-group-append buttonThing ">
+    <button onClick={this.add} className="btn btn-light" type="button"> Add Item</button>
                                     </div>
                                 </Row>
                             </form>}
@@ -344,7 +347,7 @@ export default class JobsList extends Component {
 
 
                     {/* Cards column */}
-                    <Col md={this.state.showCol ? 5 : 7} >
+                    <Col  className="cardJob" md={this.state.showCol ? 5 : 7} >
                         {this.state.jobFilter.map(item => {
                             return <JCards data={item} showDetails={this.showDetails} />
                         })}
@@ -353,11 +356,11 @@ export default class JobsList extends Component {
 
                     {/* detail column */}
                     {this.state.showCol !== false && this.state.showColContent !== null &&
-                        <Col md={3} style={{ background: "yellow" }}>
+                        <Col md={3}  className="applyCard" style={{ height: "30%" }}>
                             <Fade left>
                                 <div >
                                     {this.state.showColContent}
-                                    <Button variant="primary">Apply</Button>
+                                    <Button variant="primary"> Conform Apply</Button>
                                 </div>
                             </Fade>
                         </Col>}

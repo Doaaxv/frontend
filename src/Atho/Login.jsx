@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import './Atho.css'
 
 export default class Login extends Component {
     render() {
         return (
-            <div>
+            <div className="login">
                     <MDBContainer>
       <MDBRow>
         <MDBCol md="6">

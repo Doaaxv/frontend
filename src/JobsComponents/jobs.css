@@ -1,6 +1,15 @@
 
 
 /* Auto Sug CSS */
+/* .html{
+  background-image: url('../Images/img1.png');
+  
+} */
+
+/* html { background-image: url("../Images/img1.png");
+  background-size: 1500px;
+  background-repeat: no-repeat;
+} */
 
 .react-autosuggest__container {
     /* position: relative; */
@@ -64,4 +73,49 @@
   .buttonThing{
     display: flex;
     align-items: flex-start;
+  }
+  .imgBackground{
+    position: fixed;
+    top: 0%;
+  left: 0%;
+    background-size: cover;
+ 
+  }
+  .filterStyle{
+    border-radius: 5px;
+    background-color: rgba(155, 155, 155, 0.596);
+    margin-top: 80%;
+    margin-bottom: 4%;
+    height: 0%;
+  }
+  .filterStyle:hover{
+    background-color: rgba(248, 248, 248, 0.924);
+  
+  }
+  .boutton{
+    margin-left: 2%;
+  }
+  .cardJob{
+    margin-top: 80%;
+    margin-bottom: 4%;
+  }
+  .applyCard{
+    color: white;
+    margin-top: 80%;
+    height: 0%;
+  }
+   .textBackground{
+    display: inline;
+    position: absolute;
+    top : 45%;
+    left: 2%;
+    width: 70%;
+    color: white;
+    font-size: 250%;
+   
+ 
+  }
+  .cardJobSt{
+    color: #000;
+    text-align: center;
   }
