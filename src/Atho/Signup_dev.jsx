@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { register } from './functionAuth'
+import {Link} from "react-router-dom"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
 
@@ -10,6 +11,7 @@ const validate = values => {
     errors.firstname = 'Required';
   } else if (values.firstname.length > 15) {
     errors.firstname = 'Must be 15 characters or less';
+
   }
 
   if (!values.lastname) {
@@ -43,23 +45,12 @@ const validate = values => {
   return errors;
 };
 
-const SignupForm = () => {
-  // process.env.REACT_APP_MAPBOX_API_KEY
-  const buttonClick = (event)=>{
-    if(event.target.files[0]){
-      const img = event.target.files[0];
-      formik.values.img = img
-    }
-  }
 
-  const uploadTheImage=()=>{
-    fileUploadHandler(formik.values.img)
-  }
 
+const SignupForm = (props) => {
   const formik = useFormik({
     initialValues: {
       firstname: '',
-      img:'',
       lastname: '',
       email: '',
       password: '',
@@ -68,34 +59,37 @@ const SignupForm = () => {
       role:1
     },
     validate,
-    onSubmit:  async (values) => {
-      console.log("on submit")
 
-          getImagesUrl(values.img.name)
-          .then(url=>{
-            values.img = url
-            register(values)
-            .then(res =>{
-              if(res.data.msg=="1"){
-                    //1 means email is in use
-                    alert("Email is already in use")
-                  }else if(res.data.msg=="0"){
-                    //0 means username is already in use
-                    alert("username is already in use")
-                  }else if(res.data.msg=="3"){
-                    //3 means registeration successed
-                    alert("User registered!")
-                  }
-            })
-            .catch(err=>console.log(err))
-            
-          })
-          .catch(err=>console.log)
-
+   
+    onSubmit: async (values) => {
+     
+      register(values)
+        .then(r => {
+          console.log(r)
+          //1 means email is in use
+          if(r.data.msg=="1"){
+            console.log("1")
+            alert("Email is already in use")
+          }else if(r.data.msg=="0"){
+            console.log("0")
+            alert("username is already in use")
+          }else if(r.data.msg=="3"){
+            console.log("3")
+            console.log(r.data.user)
+            props.toggleSub(r.data.userid,r.data.username)
+            //redirect to the add portfolio and send the user id with it
+            alert("User registered!")
+          }
+        }
+        )
+        .catch(err => console.log(err))
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   return (
     <MDBContainer>
+
+      <p>Developer</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -176,9 +170,7 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <input type="file" name="files" id="" onChange={buttonClick}/>
-            <br/>
-            <MDBBtn  color="primary" onClick={uploadTheImage}>Upload image</MDBBtn>
+
             <MDBBtn type="submit" color="primary">Register</MDBBtn>
           </form>
         </MDBCol>

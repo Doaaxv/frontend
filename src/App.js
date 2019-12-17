@@ -3,11 +3,10 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import Landingpage from "./Components/Landingpage"
 import SideNav from "./Components/SideNav"
-import Portfolio from "./Components/Portfolio"
+import Portfolio from "./portfolio/Portfolio"
 import Jobs from "./JobsComponents/JobsList"
 import DevDash from "./Developer_dash/Developer_dash"
 import Login from "./Atho/Login"
-
 import SignupEmp from "./Atho/Signup_emp"
 import SignupDev from "./Atho/Signup_dev"
 import EditProfile from "./Developer_dash/Editprofile"
@@ -15,10 +14,11 @@ import changepassword from "./Developer_dash/ChangePass"
 import Username from "./Developer_dash/GetUsernamePage"
 import Projects from "./Developer_dash/ProjectsPage"
 import AddProject from "./Developer_dash/AddProject"
-
 import Signup from "./Atho/Signup_emp"
+import addPortfolio from "./portfolio/AddPortfolio"
 import axios from 'axios'
 import Try from "./Components/Try"
+import Register from "./Atho/RejesterDev"
 
 import JobListEmp from "./Employeer_dash/JobsListEmp"
 import dotenv from 'dotenv';
@@ -53,14 +53,14 @@ export default class App extends Component {
       <Router>
 
         <SideNav />
-
         {/* <Route exact path="/" exact component={Landingpage} />
         <Route exact path="/Portfolio" exact component={Portfolio} /> */}
 
+        <Route exact path="/" exact component={Landingpage} />
         {/* <Route path ="/dashboard" component={EmployerDash}/> */}
 
-        <Route exact path="/" exact component={Landingpage} />
-        <Route exact path="/Portfolio" exact render={props => (<Portfolio {...props}  data={this.state.data}  />)} />
+        <Route exact path="/addPortfolio" exact component={addPortfolio} />
+        <Route exact path="/Portfolio/:username" exact render={props => (<Portfolio {...props}  data={this.state.data}  />)} />
         <Route exact path="/login" exact component={Login} />
         <Route exact path="/Signup-dev" exact component={SignupDev} />
         <Route exact path="/Signup-emp" exact component={SignupEmp} />
@@ -75,6 +75,8 @@ export default class App extends Component {
        <Route path = "/dashboard" component={DevDash}/>
        <Route path="/jobslist" component={JobListEmp}/>
        {/* <Route path ="/uploadimage" component={UploadImage}/> */}
+
+       <Route path="/RegisterDev" component={Register}/>
        </Router>
     )
   }
