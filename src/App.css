@@ -366,4 +366,71 @@ text-orientation: mixed;
   margin-bottom: 4%;
 
 }
+.prtimgUser{
+ 
+  height: 825px;
+  width: 1800px;
+ 
+}
 
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+  .prtimgUser{
+ 
+    height: 825px;
+    width: 1800px;
+   
+  }
+}
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+
+  .prtimgUser{
+ 
+    height: 825px;
+    width: 1800px;
+   
+  }
+
+}
+@media only screen and (max-width: 2000px) {
+  /* for sumo sized (mac) screens */
+  .prtimgUser{
+ 
+    height: 825px;
+    width: 1800px;
+   
+  }
+
+}
+@media only screen and (max-device-width: 480px) {
+ /* styles for mobile browsers smaller than 480px; (iPhone) */
+ .prtimgUser{
+  height: 1500px;
+  width: 475px;
+}
+
+}
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+/* For portrait layouts only */
+.prtimgUser{
+ 
+  height: 825px;
+  width: 1800px;
+ 
+}
+
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+/* For landscape layouts only */
+.prtimgUser{
+ 
+  height: 825px;
+  width: 1800px;
+ 
+}
+
+}

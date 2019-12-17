@@ -1,20 +1,21 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { register } from './functionAuth'
+import {Link} from "react-router-dom"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
+  if (!values.firstname) {
+    errors.firstname = 'Required';
+  } else if (values.firstname.length > 15) {
     errors.firstName = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.lastname) {
+    errors.lastname = 'Required';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -42,11 +43,11 @@ const validate = values => {
   return errors;
 };
 
-const SignupForm = () => {
+const SignupForm = (props) => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       cpassword: '',
@@ -55,14 +56,26 @@ const SignupForm = () => {
     },
     validate,
     onSubmit: async (values) => {
+      
+      
+
+      // console.log(values)
+
       register(values)
         .then(r => {
+          console.log(r)
           //1 means email is in use
-          if(r.data=="1"){
+          if(r.data.msg=="1"){
+            console.log("1")
             alert("Email is already in use")
-          }else if(r.data=="0"){
+          }else if(r.data.msg=="0"){
+            console.log("0")
             alert("username is already in use")
-          }else if(r.data=="3"){
+          }else if(r.data.msg=="3"){
+            console.log("3")
+            console.log(r.data.user)
+            props.toggleSub(r.data.userid,r.data.username)
+            //redirect to the add portfolio and send the user id with it
             alert("User registered!")
           }
         }
@@ -73,33 +86,35 @@ const SignupForm = () => {
   });
   return (
     <MDBContainer>
+
+      <p>Developer</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
               label="First name"
-              id="firstName"
-              name="firstName"
+              id="firstname"
+              name="firstname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.firstname}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div>{formik.errors.firstname}</div>
             ) : null}
 
             <MDBInput
               label="Last name"
-              id="lastName"
-              name="lastName"
+              id="lastname"
+              name="lastname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.lastName}
+              value={formik.values.lastname}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div>{formik.errors.lastname}</div>
             ) : null}
 
             <MDBInput
@@ -153,7 +168,9 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <MDBBtn type="submit" color="primary">Register</MDBBtn>
+            <MDBBtn type="submit" color="primary">
+              {/* <Link to = "/addPortfolio" > Register </Link> */}
+              </MDBBtn>
             {/* <Button type="submit">Submit</Button> */}
           </form>
         </MDBCol>

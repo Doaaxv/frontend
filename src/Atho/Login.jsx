@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { login } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import { Redirect } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 const validate = values => {
   const errors = {};
@@ -22,6 +24,9 @@ const validate = values => {
 };
 
 const LoginForm = () => {
+  const [show, setShow] = useState(false);
+  const [username,setUsername] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -38,6 +43,10 @@ const LoginForm = () => {
         }else{
           localStorage.setItem('usertoken' , res.data)
           alert("login successfully")
+          console.log(jwt_decode(localStorage.usertoken).user.username)
+          setUsername(jwt_decode(localStorage.usertoken).user.username)
+          
+          setShow(!show)
         } 
         })
       .catch(err=>console.log(err))
@@ -45,6 +54,7 @@ const LoginForm = () => {
   });
   return (
     <MDBContainer>
+      {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>  
