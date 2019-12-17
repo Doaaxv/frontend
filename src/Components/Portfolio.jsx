@@ -130,8 +130,6 @@ export default function Portfolio (props) {
   </div>
   {/* showText */}
         {showText &&
-        
-        
         <div ref={myRef} >
           <div className="projectCards"> 
             {props.data.map( e =>{ 

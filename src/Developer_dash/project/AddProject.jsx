@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
 import { useFormik } from 'formik';
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-
+import { Navbar,Nav} from "react-bootstrap";
+import Axios from 'axios';
+import {localhost} from "../../GlobalVars"
 const validate = values => {
     const errors = {};
-  
     if (!values.title) {
       errors.email = 'Required';
     }
-  
     if (!values.description) {
       errors.password = "Required"
     }
-
     return errors;
   };
-
 const AddProjectForm = () => {
     const formik = useFormik({
         initialValues: {
@@ -28,21 +25,22 @@ const AddProjectForm = () => {
         },
         validate,
         onSubmit: async (values) => {
-        //   login(values)
-        //   .then(res =>{
-        //     if(res.data=="1"){
-        //       alert("password is incorrect")
-        //     }else if(res.data=="2"){
-        //       alert("email not found")
-        //     }else{
-        //       localStorage.setItem('usertoken' , res.data)
-        //       alert("login successfully")
-        //     } 
-        //     })
-        //   .catch(err=>console.log(err))
+          Axios.post(`${localhost}/project/create`,values)
+          .then(result=>console.log(result))
+          .catch(err=>console.log(err))
         },
       });
       return (
+        <div>
+       <br/>
+       <Nav fill variant="tabs" defaultActiveKey="/home">
+    <Nav.Item>
+    <Nav.Link href="/addProject">add project </Nav.Link>
+    </Nav.Item>
+    <Nav.Item>
+    <Nav.Link href="/projects">Show project</Nav.Link>
+    </Nav.Item>
+  </Nav>
         <MDBContainer>
           <MDBRow>
             <MDBCol md="6">
@@ -57,8 +55,7 @@ const AddProjectForm = () => {
                   value={formik.values.title}
                 />
                 {formik.touched.title && formik.errors.title ? (
-                  <div>{formik.errors.title}</div>
-                ) : null}
+                  <div>{formik.errors.title} </div> ) : null}
                 <MDBInput
                   label="Description"
                   id="description"
@@ -66,12 +63,11 @@ const AddProjectForm = () => {
                   type="textarea"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.description}
-                />
+                  value={formik.values.description} />
                 {formik.touched.description && formik.errors.description ? (
-                  <div>{formik.errors.description}</div>
-                ) : null}
-
+                  <div>{formik.errors.description} </div>
+                ): null}
+                
                 <MDBInput
                   label="Image"
                   id="image"
@@ -84,7 +80,6 @@ const AddProjectForm = () => {
                 {formik.touched.image && formik.errors.image ? (
                   <div>{formik.errors.image}</div>
                 ) : null}
-
                 <MDBInput
                   label="Github"
                   id="github"
@@ -97,12 +92,12 @@ const AddProjectForm = () => {
                 {formik.touched.github && formik.errors.github ? (
                   <div>{formik.errors.github}</div>
                 ) : null}
-
-                <MDBBtn type="submit" color="primary">Login</MDBBtn>
+                <MDBBtn type="submit" color="primary">Add</MDBBtn>
               </form>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+        </div>
       );
     };
 

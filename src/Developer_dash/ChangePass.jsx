@@ -49,9 +49,6 @@ const ChangepassForm = () => {
                         alert("Password changed successfully")
                     }
                 })
-
-
-
         },
     });
     return (
@@ -59,7 +56,6 @@ const ChangepassForm = () => {
             <MDBRow>
                 <MDBCol md="6">
                     <form>
-
                         <MDBInput
                             label="Enter old password"
                             id="password"

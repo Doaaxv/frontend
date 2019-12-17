@@ -11,10 +11,11 @@
   background-repeat: no-repeat;
 } */
 
-.react-autosuggest__container {
+/* .react-autosuggest__container {
     /* position: relative; */
-  }
-  
+
+/* } */
+   */
   .react-autosuggest__input {
     width: 240px;
     height: 40px;

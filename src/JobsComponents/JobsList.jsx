@@ -89,9 +89,7 @@ export default class JobsList extends Component {
                 if (!technologies.includes(tech)) { technologies.push(tech) }
             })
         })
-
-
-
+        
         var max_val = Math.max.apply(Math, this.state.jobs.map(item => {
             return item.price
         }))
