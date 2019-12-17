@@ -45,6 +45,8 @@ const validate = values => {
 };
 
 const SignupForm = () => {
+
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -59,20 +61,21 @@ const SignupForm = () => {
     onSubmit: async (values) => {
       register(values)
         .then(res => {
-          if(res.data=="1"){
+          if(res.data.msg=="1"){
             alert("Email is already in use")
-          }else if(res.data=="0"){
+          }else if(res.data.msg=="0"){
             alert("username is already in use")
-          }else if(res.data=="3"){
+          }else if(res.data.msg=="3"){
             alert("User registered!")
-          }
-        }
+          }}
         )
         .catch(err => console.log(err))
     },
   });
   return (
     <MDBContainer>
+
+      <p>employee</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>

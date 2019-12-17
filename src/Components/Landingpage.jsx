@@ -44,7 +44,7 @@ export const Landingpage = () => {
         <h2>Our all-in-one platform gives you everything you need to run your Job</h2> 
         <br/>
       <div className="hov"> 
-      <Link className="link" to = "/">I want to Hire </Link>
+      <Link className="link" to = "/Signup-emp">I want to Hire </Link>
       <Link className="link1" to = "/Jobs">I want to Work </Link>
        
       </div>

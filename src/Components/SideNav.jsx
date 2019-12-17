@@ -54,9 +54,9 @@ class SideNav extends React.Component {
             &times;
           </a>
           <Link className="link" to = "/">home page </Link>
-          <Link className="link" to = "/">employeer</Link>
-          <Link className="link" to = "/jobs">show job </Link>
-          <Link className="link" to = "/login">login</Link>
+          <Link className="link" to = "/Signup-emp">employeer</Link>
+          <Link className="link" to = "/Jobs"> show job </Link>
+          <Link className="link" to = "/Signup-dev">sign up as Developer</Link>
           
         </div>
       </React.Fragment>

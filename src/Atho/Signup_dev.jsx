@@ -1,7 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { register } from './functionAuth'
+import {Link} from "react-router-dom"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
 
 const validate = values => {
   const errors = {};
@@ -42,7 +44,9 @@ const validate = values => {
   return errors;
 };
 
-const SignupForm = () => {
+
+
+const SignupForm = (props) => {
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -54,15 +58,25 @@ const SignupForm = () => {
       role:1
     },
     validate,
+
+   
     onSubmit: async (values) => {
+     
       register(values)
-        .then(res => {
+        .then(r => {
+          console.log(r)
           //1 means email is in use
-          if(res.data=="1"){
+          if(r.data.msg=="1"){
+            console.log("1")
             alert("Email is already in use")
-          }else if(res.data=="0"){
+          }else if(r.data.msg=="0"){
+            console.log("0")
             alert("username is already in use")
-          }else if(res.data=="3"){
+          }else if(r.data.msg=="3"){
+            console.log("3")
+            console.log(r.data.user)
+            props.toggleSub(r.data.userid,r.data.username)
+            //redirect to the add portfolio and send the user id with it
             alert("User registered!")
           }
         }
@@ -73,6 +87,8 @@ const SignupForm = () => {
   });
   return (
     <MDBContainer>
+
+      <p>Developer</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -153,8 +169,8 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
+
             <MDBBtn type="submit" color="primary">Register</MDBBtn>
-            {/* <Button type="submit">Submit</Button> */}
           </form>
         </MDBCol>
       </MDBRow>
