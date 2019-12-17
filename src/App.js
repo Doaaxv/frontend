@@ -20,12 +20,11 @@ import EditProject from "./Developer_dash/project/EditProject"
 import axios from 'axios'
 import Try from "./Components/Try"
 import Register from "./Atho/RejesterDev"
-
 import JobListEmp from "./Employeer_dash/JobsListEmp"
 import dotenv from 'dotenv';
 dotenv.config();
 // import UploadImage from "./ImageUpload/UploadImage"
-// import SideNav from './side-nav/SideNav'
+//import SideNav from './side-nav/SideNav'
 
 
 export default class App extends Component {
@@ -52,10 +51,8 @@ export default class App extends Component {
         <SideNav />
         {/* <Route exact path="/" exact component={Landingpage} />
         <Route exact path="/Portfolio" exact component={Portfolio} /> */}
-
         <Route exact path="/" exact component={Landingpage} />
         {/* <Route path ="/dashboard" component={EmployerDash}/> */}
-
         <Route exact path="/addPortfolio" exact component={addPortfolio} />
         <Route exact path="/Portfolio/:username" exact render={props => (<Portfolio {...props}  data={this.state.data}  />)} />
         <Route exact path="/login" exact component={Login} />
@@ -67,13 +64,12 @@ export default class App extends Component {
         <Route path="/username/:username" component={Username}/>
         <Route path="/projects" component={Projects}/> 
         <Route path="/job" component={Jobs}/>
-        <Route path="/addProject" component={AddProject}/>
+        {/* <Route path="/addProject" component={AddProject}/> */}
        <Route exact path="/Try" exact component={Try}/>
        <Route path = "/dashboard" component={DevDash}/>
        <Route path = "/EditProject" component={EditProject}/>
        <Route path="/jobslist" component={JobListEmp}/>
        {/* <Route path ="/uploadimage" component={UploadImage}/> */}
-
        <Route path="/RegisterDev" component={Register}/>
        </Router>
     )

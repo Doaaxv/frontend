@@ -1,8 +1,5 @@
 import { storage } from "./config"
 
-
-  
-
 export const fileUploadHandler = async (uploded_img) => {
   var testUrl = ""
   const UploadTask = storage.ref(`prodimg/${uploded_img.name}`)
@@ -14,9 +11,6 @@ export const fileUploadHandler = async (uploded_img) => {
       storage.ref('prodimg').child(uploded_img.name).getDownloadURL()
       .then(url => { })})
 }
-
-
-
 
 export const getImagesUrl = async (imagename) => {
   return storage.ref('prodimg').child(imagename).getDownloadURL()
