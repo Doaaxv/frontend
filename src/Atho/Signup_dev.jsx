@@ -2,19 +2,20 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
 
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+  if (!values.firstname) {
+    errors.firstname = 'Required';
+  } else if (values.firstname.length > 15) {
+    errors.firstname = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.lastname) {
+    errors.lastname = 'Required';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -43,10 +44,23 @@ const validate = values => {
 };
 
 const SignupForm = () => {
+  // process.env.REACT_APP_MAPBOX_API_KEY
+  const buttonClick = (event)=>{
+    if(event.target.files[0]){
+      const img = event.target.files[0];
+      formik.values.img = img
+    }
+  }
+
+  const uploadTheImage=()=>{
+    fileUploadHandler(formik.values.img)
+  }
+
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      img:'',
+      lastname: '',
       email: '',
       password: '',
       cpassword: '',
@@ -54,21 +68,30 @@ const SignupForm = () => {
       role:1
     },
     validate,
-    onSubmit: async (values) => {
-      register(values)
-        .then(r => {
-          //1 means email is in use
-          if(r.data=="1"){
-            alert("Email is already in use")
-          }else if(r.data=="0"){
-            alert("username is already in use")
-          }else if(r.data=="3"){
-            alert("User registered!")
-          }
-        }
-        )
-        .catch(err => console.log(err))
-      // alert(JSON.stringify(values, null, 2));
+    onSubmit:  async (values) => {
+      console.log("on submit")
+
+          getImagesUrl(values.img.name)
+          .then(url=>{
+            values.img = url
+            register(values)
+            .then(res =>{
+              if(res.data.msg=="1"){
+                    //1 means email is in use
+                    alert("Email is already in use")
+                  }else if(res.data.msg=="0"){
+                    //0 means username is already in use
+                    alert("username is already in use")
+                  }else if(res.data.msg=="3"){
+                    //3 means registeration successed
+                    alert("User registered!")
+                  }
+            })
+            .catch(err=>console.log(err))
+            
+          })
+          .catch(err=>console.log)
+
     },
   });
   return (
@@ -78,28 +101,28 @@ const SignupForm = () => {
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
               label="First name"
-              id="firstName"
-              name="firstName"
+              id="firstname"
+              name="firstname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.firstname}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div>{formik.errors.firstname}</div>
             ) : null}
 
             <MDBInput
               label="Last name"
-              id="lastName"
-              name="lastName"
+              id="lastname"
+              name="lastname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.lastName}
+              value={formik.values.lastname}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div>{formik.errors.lastname}</div>
             ) : null}
 
             <MDBInput
@@ -153,8 +176,10 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
+            <input type="file" name="files" id="" onChange={buttonClick}/>
+            <br/>
+            <MDBBtn  color="primary" onClick={uploadTheImage}>Upload image</MDBBtn>
             <MDBBtn type="submit" color="primary">Register</MDBBtn>
-            {/* <Button type="submit">Submit</Button> */}
           </form>
         </MDBCol>
       </MDBRow>
