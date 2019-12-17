@@ -3,13 +3,15 @@ import { useFormik } from 'formik';
 import { register } from './functionAuth'
 import {Link} from "react-router-dom"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
 
 const validate = values => {
   const errors = {};
   if (!values.firstname) {
     errors.firstname = 'Required';
   } else if (values.firstname.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+    errors.firstname = 'Must be 15 characters or less';
+
   }
 
   if (!values.lastname) {
@@ -43,6 +45,8 @@ const validate = values => {
   return errors;
 };
 
+
+
 const SignupForm = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -55,12 +59,10 @@ const SignupForm = (props) => {
       role:1
     },
     validate,
+
+   
     onSubmit: async (values) => {
-      
-      
-
-      // console.log(values)
-
+     
       register(values)
         .then(r => {
           console.log(r)
@@ -168,10 +170,8 @@ const SignupForm = (props) => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <MDBBtn type="submit" color="primary">
-              {/* <Link to = "/addPortfolio" > Register </Link> */}
-              </MDBBtn>
-            {/* <Button type="submit">Submit</Button> */}
+
+            <MDBBtn type="submit" color="primary">Register</MDBBtn>
           </form>
         </MDBCol>
       </MDBRow>
