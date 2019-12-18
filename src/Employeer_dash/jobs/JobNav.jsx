@@ -5,6 +5,8 @@ import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import AddJob from "./AddJob"
 import JobsCards from "./"
+import { Form, Row } from "react-bootstrap";
+import reqJCards from "./JobsCardsEmp"
 
 export default class JobNav extends Component {
 
@@ -36,6 +38,8 @@ export default class JobNav extends Component {
     }
     this.setState({
       showT:e.target.name,
+      details:null,
+      show:false,
       tab1:tab1,
       tab2:tab2,
       tab3:tab3,
@@ -70,6 +74,13 @@ export default class JobNav extends Component {
     })
     .catch(err=>console.log(err))
   }
+
+  showDetails = (item,job_id) =>{
+    this.setState({details:item,show:true,job_id:job_id})
+  }
+
+
+
   render() {
 
     return (
@@ -120,11 +131,19 @@ export default class JobNav extends Component {
         </div>
         }
       {this.state.requested =="requested" && 
-      <div>
+      <Row>
+        <Col md="8">
         {this.state.requested.map(job=>{
-          return <JobsCards data={job} />
+          return <reqJCards data={job} showDetails={this.showDetails}/>
         })}
-      </div>
+        </Col>
+        { this.state.details!=null && this.state.show &&
+        <Col md="4">
+        {this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}
+        </Col>
+        }
+        
+      </Row>
       }
       </div>
     );

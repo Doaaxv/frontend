@@ -4,7 +4,7 @@ import axios from 'axios';
 import {localhost} from "../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import JCards from "./JobsCardsEmp"
-import DCards from "./DevsCards"
+import DCards from "./jobs/DevsCards"
 export default class JobsListEmp extends Component {
 
     state = {
