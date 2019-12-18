@@ -69,7 +69,6 @@ export default class App extends Component {
         <Route exact path="/" exact component={Landingpage} />
         {/* <Route exact path="/addPortfolio" exact component={addPortfolio}/> */}
         <Route exact path="/Portfolio/:username" exact component={Portfolio} />
-
         {(localStorage.usertoken) ? null: 
         <Route exact path="/login" exact component={Login} />}
         {(localStorage.usertoken) ? null: 
@@ -94,7 +93,7 @@ export default class App extends Component {
        {/* <Route exact path="/Try" exact component={Try}/> */}
        {(localStorage.usertoken) ?  
         <Route path = "/dashboard" component={DevDash}/> :null }
-
+        
        <Route path="/jobslist" component={JobListEmp}/>
        {/* <Route path ="/uploadimage" component={UploadImage}/> */}
        {(localStorage.usertoken) ? null: 

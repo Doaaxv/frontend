@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import DashEmpNavBar from "./EemDashNav";
-
-import JobNav from "./jobs/JobNav";
-
-// import EditProfile from "./Editprofile";
-import Addjobs from "./jobs/AddJob";
+import Addjob from "./jobs/JobNav"
 
 export default class Employer_dash extends Component {
   render() {
@@ -14,15 +8,7 @@ export default class Employer_dash extends Component {
       <div>
         <DashEmpNavBar/>
         <br/>
-        <Router>
-        <Route path="EmpDash/EmpJobs" component={JobNav} />
-
-          {/* <Route path="/EmpDash/Emp-editprofile" component={EditProfile} /> */}
-          {/* <Route path="/EmpDash/Emp-Projects" component={projectNav} /> */}
-          
-          {/* <Route path="/EmpDash/Emp-Projects/projects" component={Projects} /> */}
-          <Route path="/EmpDash/Emp-Projects/addjobs" component={Addjobs} />
-        </Router>
+        <Addjob/>
       </div>
     );
   }
