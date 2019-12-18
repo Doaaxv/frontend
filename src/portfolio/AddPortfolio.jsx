@@ -114,11 +114,8 @@ const AddPortfolio = (props) => {
     <MDBContainer className="register">
 
       {show && <Redirect to={{ pathname: `/login` }} />}
-      {/* {show && <Redirect to={{ pathname: `/Portfolio/${props.username}` ,  state: { data: formik.values }  }} />} */}
+
       
-      {/* {show == false && <p>show is {show}</p>}
-      {show == true && <p>show is {show}</p>} */}
-      <p>Developer</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -217,11 +214,9 @@ const AddPortfolio = (props) => {
 
             <input type="file" name="files" id="" onChange={buttonClick} />
             <br />
-            <MDBBtn color="primary" onClick={uploadTheImage}>Upload image</MDBBtn>
-
-            <MDBBtn type="submit" color="primary">Submit</MDBBtn>
-
-            {/* <Button type="submit">Submit</Button> */}
+            <button className="bot1" onClick={uploadTheImage}>Upload image </button>
+            <button className="bot" > Submit </button>
+          
           </form>
         </MDBCol>
       </MDBRow>
