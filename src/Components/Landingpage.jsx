@@ -85,7 +85,6 @@ export const Landingpage = () => {
        
       </div>}
      </div>
-       
                  <img className="map"src={Map} alt="boy" /> 
            <div className="num"><Spring 
                   from={{ number: 0 }}
@@ -95,12 +94,9 @@ export const Landingpage = () => {
                  </Spring>
                  
                  <h1 className="fontstylesaudi" >saudi Programmers</h1>
-                 </div>
-                 
+                 </div>    
       </div>
     </Parallax>
-
-{/* 1 */}
 
    
     <Parallax  blur={{ min: -1, max: 3 }}>
@@ -154,7 +150,7 @@ export const Landingpage = () => {
 
       </div>
     </Parallax>
-
+    <Parallax>
           <img className="map" src={Map} alt="boy" />
           <div className="num">
             <Spring from={{ number: 0 }} to={{ number: 643000000 }}>
@@ -163,64 +159,8 @@ export const Landingpage = () => {
 
             <h1 className="fontstylesaudi">saudi Programmers</h1>
           </div>
-        </div>
       </Parallax>
 
-      {/* 1 */}
-
-      <Parallax blur={{ min: -1, max: 3 }}>
-        <div style={{ height: 720 }}>
-          <div className="free">
-            <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" className="imgLandpage" src={Postjobs} />
-              <Card.Body>
-                <Card.Title className="fontstyle">Post a job</Card.Title>
-                <Card.Text className="fontstyleInsideCard">
-                  It's easy. Simply post a job you need completed and receive
-                  competitive bids from freelancers within minutes.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-
-            <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" className="imgLandpage" src={free} />
-              <Card.Body>
-                <Card.Title className="fontstyle">
-                  Choose freelancers
-                </Card.Title>
-                <Card.Text className="fontstyleInsideCard">
-                  Whatever your needs, there will be a freelancer to get it
-                  done: from web design, mobile app development, virtual
-                  assistants, product manufacturing, and graphic design (and a
-                  whole lot more).
-                </Card.Text>
-              </Card.Body>
-            </Card>
-
-            <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" src="holder.js/100px180" />
-              <Card.Body>
-                <Card.Title className="fontstyle">Portfolio</Card.Title>
-                <Card.Text className="fontstyleInsideCard">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" className="imgLandpage" src={MeetUp} />
-              <Card.Body>
-                <Card.Title className="fontstyle">MeetUp</Card.Title>
-                <Card.Text className="fontstyleInsideCard">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <br />
-          </div>
-        </div>
-      </Parallax>
 
       <h1 className="divider">| | |</h1>
       <Parallax bgImage={img4} strength={200}>
@@ -242,7 +182,7 @@ export const Landingpage = () => {
         </div>
       </Parallax>
 
-      {/* 2 */}
+      // {/* 2 */}
 
       <h1 className="divider">| | |</h1>
       <h1 className="divider">| | |</h1>
@@ -275,8 +215,7 @@ export const Landingpage = () => {
               </Link>
             </div>
           </div>
-        )}
-      >
+        )} >
         <div style={{ height: 500 }}>
           <h1 className="logoDDW">DDW</h1>
           <p className="copy ">© 2020, The DDW Company. All rights reserved.</p>
@@ -287,8 +226,7 @@ export const Landingpage = () => {
           <p>Careers | Newsroom</p>
         </div>
       </Parallax>
-      <div />
-    </div>
+   </div>
   );
 };
 export default Landingpage;

@@ -5,6 +5,7 @@ import img1 from "../Images/img1.png"
 import './Atho.css'
 import Portfolio from "../portfolio/Portfolio"
 import { Button } from 'react-bootstrap';
+
 export default class RejesterDev extends Component {
 
     state={
@@ -14,7 +15,6 @@ export default class RejesterDev extends Component {
     }
 
     toggleSub = (id,username)=>{
-        console.log("REeeeeeeEEeeEEEEEEEEeGGG")
         this.setState({show:false,userid:id,username:username})
     }
 

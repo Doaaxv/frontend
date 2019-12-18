@@ -28,6 +28,8 @@ const validate = values => {
 const LoginForm = () => {
   const [show, setShow] = useState(false);
   const [username,setUsername] = useState(false);
+  const [emp,setEmp] = useState(false);
+
 
   const formik = useFormik({
     initialValues: {
@@ -47,7 +49,15 @@ const LoginForm = () => {
           alert("login successfully")
           console.log(jwt_decode(localStorage.usertoken).user.username)
           setUsername(jwt_decode(localStorage.usertoken).user.username)
-          setShow(!show)
+          console.log(jwt_decode(localStorage.usertoken).user.role)
+
+          if(jwt_decode(localStorage.usertoken).user.role=="1"){
+            setUsername(jwt_decode(localStorage.usertoken).user.username)
+            setShow(!show)
+          }else{
+            setEmp(!emp)
+          }
+          
         } 
         })
       .catch(err=>console.log(err))
@@ -66,6 +76,7 @@ const LoginForm = () => {
 
     <MDBContainer className="register" >
       {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
+      {emp && <Redirect to={{ pathname: `/EmpDash` }} />}
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>  

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Card, Button, Nav } from "react-bootstrap";
 import axios from "axios"
 import {localhost} from "../../GlobalVars"
-import ViewProject from "./ViewProject";
 import { Redirect } from 'react-router-dom'
 export default class ProjectCards extends Component {
 state = {

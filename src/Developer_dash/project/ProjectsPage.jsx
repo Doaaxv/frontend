@@ -3,7 +3,6 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { localhost } from "../../GlobalVars";
 import ProjectCards from "./ProjectCards";
-import { Navbar, Nav } from "react-bootstrap";
 
 export default class ProjectsPage extends Component {
   state = {

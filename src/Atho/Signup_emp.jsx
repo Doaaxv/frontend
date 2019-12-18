@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
 import { Col, Row, Form, Container, Button } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import './Atho.css'
 import hire from '../Images/m.png'
+import { Redirect } from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
@@ -39,15 +40,12 @@ const validate = values => {
     }
   }
 
-  if (!values.username) {
-    errors.username = "Required"
-  }
-
   return errors;
 };
 
 const SignupForm = () => {
 
+  const [show, setShow] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -56,7 +54,6 @@ const SignupForm = () => {
       email: '',
       password: '',
       cpassword: '',
-      username: '',
       role:2
     },
     validate,
@@ -68,6 +65,7 @@ const SignupForm = () => {
           }else if(res.data.msg=="0"){
             alert("username is already in use")
           }else if(res.data.msg=="3"){
+            setShow(!show)
             alert("User registered!")
           }}
         )
@@ -76,6 +74,9 @@ const SignupForm = () => {
   });
   return (
     <div>
+      {show && <Redirect to={{ pathname: `/login` }} />}
+
+      
        <img style={{ width: '100%', height: '100%'  }}  className="background"
                 src={hire} />
     <MDBContainer className="register" >
@@ -109,18 +110,6 @@ const SignupForm = () => {
               <div>{formik.errors.lastName}</div>
             ) : null}
 
-            <MDBInput
-              label="Username"
-              id="username"
-              name="username"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.username}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <div>{formik.errors.username}</div>
-            ) : null}
 
             <MDBInput
               label="Email"
