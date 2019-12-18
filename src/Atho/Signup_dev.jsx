@@ -95,8 +95,6 @@ const SignupForm = (props) => {
         loop={Infinity}
         wrapper="p"
       />
-
-
     <MDBContainer className="register">
    
       <MDBRow >
