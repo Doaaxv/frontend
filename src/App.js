@@ -63,13 +63,9 @@ export default class App extends Component {
       <Router>
         <SideNav />
         <Logo/>
-        {/* <Route exact path="/" exact component={Landingpage} />
-        <Route exact path="/Portfolio" exact component={Portfolio} /> */}
         <Route exact path="/" exact component={Landingpage} />
-        {/* <Route path ="/dashboard" component={EmployerDash}/> */}
-        <Route exact path="/addPortfolio" exact component={addPortfolio} />
-        <Route exact path="/Portfolio/:username" exact component={Portfolio}  //render={props => (<Portfolio {...props}  data={this.state.data}  />)}
-         />
+        {/* <Route exact path="/addPortfolio" exact component={addPortfolio}/> */}
+        <Route exact path="/Portfolio/:username" exact component={Portfolio} />
         <Route exact path="/login" exact component={Login} />
         <Route exact path="/Signup-dev" exact component={SignupDev} />
         <Route exact path="/Signup-emp" exact component={SignupEmp} />
