@@ -12,13 +12,18 @@ import SignupDev from "./Atho/Signup_dev"
 import EditProfile from "./Developer_dash/Editprofile"
 import changepassword from "./Developer_dash/ChangePass"
 import Username from "./Developer_dash/GetUsernamePage"
+
 // import Projects from "./Developer_dash/ProjectsPage"
 // import AddProject from "./Developer_dash/AddProject"
+
+import Logo from "./Components/logo"
+
+import AddProject from "./Developer_dash/project/AddProject"
+
 import Signup from "./Atho/Signup_emp"
 import addPortfolio from "./portfolio/AddPortfolio"
 import EditProject from "./Developer_dash/project/EditProject"
 import axios from 'axios'
-import Try from "./Components/Try"
 import Register from "./Atho/RejesterDev"
 
 import JobListEmp from "./Employeer_dash/JobsListEmp"
@@ -50,6 +55,7 @@ export default class App extends Component {
     return (
       <Router>
         <SideNav />
+        <Logo/>
         {/* <Route exact path="/" exact component={Landingpage} />
         <Route exact path="/Portfolio" exact component={Portfolio} /> */}
 
@@ -68,8 +74,10 @@ export default class App extends Component {
         <Route path="/username/:username" component={Username}/>
         {/* <Route path="/projects" component={Projects}/>  */}
         <Route path="/job" component={Jobs}/>
+
         {/* <Route path="/addProject" component={AddProject}/> */}
        <Route exact path="/Try" exact component={Try}/>
+        <Route path="/addProject" component={AddProject}/>
        <Route path = "/dashboard" component={DevDash}/>
        <Route path = "/EditProject" component={EditProject}/>
        <Route path="/jobslist" component={JobListEmp}/>
