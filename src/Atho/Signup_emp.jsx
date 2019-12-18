@@ -5,6 +5,7 @@ import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import './Atho.css'
+import hire from '../Images/m.png'
 
 const validate = values => {
   const errors = {};
@@ -74,9 +75,11 @@ const SignupForm = () => {
     },
   });
   return (
+    <div>
+       <img style={{ width: '100%', height: '100%'  }}  className="background"
+                src={hire} />
     <MDBContainer className="register" >
-<p className="logo">DDW</p>
-      <p>employee</p>
+   <h1 style={{ color: "white"   }}  >employee</h1>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -162,6 +165,7 @@ const SignupForm = () => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
   );
 };
 
