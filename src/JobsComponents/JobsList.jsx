@@ -49,6 +49,7 @@ export default class JobsList extends Component {
             .then(j => {
                 console.log("JOBSSS DATA")
                 console.log(j.data)
+                if(j.data.length>0){
                 var technologies = []
 
                 j.data.forEach(item => {
@@ -68,7 +69,7 @@ export default class JobsList extends Component {
 
                 const defaultValues = [0, maxNum];
                 this.setState({ tech: technologies, sliderHandlesVal: defaultValues, domain: domain, jobs: j.data,jobFilter:j.data })
-                // this.setState({jobs:j.data})
+            }// this.setState({jobs:j.data})
             })
             .catch(err => console.log(err))
 
@@ -227,11 +228,12 @@ export default class JobsList extends Component {
 
      <img  className="imgBackground" style={{ height: "100%" , width: "100%" }} src={Jobs} alt="Portfolio" /> 
                 
+                {this.state.jobs.length>0 && 
                 <Row >
                     {/* Filter column */}
                     <Col md={3} className="filterStyle"  >
                         <br />
-                        <h4>Salary</h4>
+                        <h4>Budget</h4>
 
                         {/* Slider code */}
                         {this.state.sliderHandlesVal.length !== 0 &&
@@ -376,7 +378,7 @@ export default class JobsList extends Component {
                                 </div>
                             </Fade>
                         </Col>}
-                </Row>
+                </Row>}
             </Container>
         )
     }

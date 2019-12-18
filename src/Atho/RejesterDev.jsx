@@ -14,8 +14,7 @@ export default class RejesterDev extends Component {
     }
 
     toggleSub = (id,username)=>{
-        console.log("HEEEYYYYYY in father component")
-        console.log(id+"  "+username)
+        console.log("REeeeeeeEEeeEEEEEEEEeGGG")
         this.setState({show:false,userid:id,username:username})
     }
 

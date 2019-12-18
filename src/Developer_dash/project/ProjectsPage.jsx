@@ -11,7 +11,7 @@ export default class ProjectsPage extends Component {
   };
   componentDidMount = () => {
     axios
-      .get(`${localhost}/project/`)
+      .get(`${localhost}/project/developer/${jwt_decode(localStorage.usertoken).user._id}`)
       .then(res => {
         console.log(res.data);
         this.setState({ projects: res.data });
