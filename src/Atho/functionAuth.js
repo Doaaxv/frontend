@@ -10,5 +10,5 @@ export const register = (newuser)=>{
 }
 // login 
 export const login = (user)=>{
-    return axios.post(`${localhost}//user/login` , user)
+    return axios.post(`${localhost}/user/login` , user)
 }
