@@ -5,7 +5,7 @@ import Autosuggest from 'react-autosuggest';
 import Fade from 'react-reveal/Fade';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './jobs.css'
-import Reveal from 'react-reveal/Reveal';
+import Slide from 'react-reveal/Slide';
 import { Col, Row, Container, Button } from 'react-bootstrap';
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 import { SliderRail, Handle, Track, Tick } from "./SliderComponent";
@@ -227,11 +227,26 @@ export default class JobsList extends Component {
         };
 
         return (
-            <Container> 
- 
-          <h1 className="textBackground"> React Reveal</h1>
-      
-<img  className="imgBackground" style={{ height: 850 }} src={Jobs} alt="Portfolio" /> 
+         
+    <Container> 
+    <div>
+        <Slide top>
+          <h1 className="textBackground" >Careers</h1>
+         <div className="textCareer">
+        <p>Toptal is a marketplace for top developers, engineers, programmers, coders, architects, and consultants.
+        Top companies and start-ups hire freelance developers from Toptal for their most mission-critical projects.  When you join The DDW Company, you are choosing to be a part of something far bigger than you can even imagine. TRSDC is pioneering the future of sustainable tourism, creating a new standard of sustainable luxury tourism and immersive experiences.</p>
+         </div>
+        </Slide>
+      </div>
+
+      <div className ="arroww">
+      <div className="arrow">
+                <span></span>
+                <span></span> 
+      </div>
+      </div>
+
+     <img  className="imgBackground" style={{ height: "100%" , width: "100%" }} src={Jobs} alt="Portfolio" /> 
                 
                 <Row >
                     {/* Filter column */}

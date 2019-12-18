@@ -1,11 +1,13 @@
 
 import React ,{ useState } from 'react';
+import img1 from '../Images/img1.png'
 import { useFormik } from 'formik';
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
+import Typical from 'react-typical'
 import { login } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import { Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
+import "./Atho.css"
 
 const validate = values => {
   const errors = {};
@@ -53,7 +55,17 @@ const LoginForm = () => {
     },
   });
   return (
-    <MDBContainer>
+    <div>
+      <img style={{ width: '100%', height: '150%' }} src={img1} />
+
+
+      <Typical className="deverlperReg"
+        steps={['Login to your', 1500, 'Login to your account....', 50000]}
+        loop={Infinity}
+        wrapper="p"
+      />
+
+    <MDBContainer className="register" >
       {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
       <MDBRow>
         <MDBCol md="6">
@@ -87,6 +99,7 @@ const LoginForm = () => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
   );
 };
 
