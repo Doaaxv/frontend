@@ -226,6 +226,7 @@ const AddPortfolio = (props) => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
   )
 };
 
