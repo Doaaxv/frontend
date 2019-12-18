@@ -9,11 +9,26 @@ export default class JobNav extends Component {
 
   state = {
     showT:"",
-    jobs:null
+    jobs:null,
+    tab1:false,
+    tab2:false
   }
 
   showStuff = (e) =>{
-    this.setState({showT:e.target.name})
+    var tab1 =false
+    var tab2 = false
+
+    if(e.target.name=="Prequests"){
+      tab1=true
+    }
+    if(e.target.name=="Assigned"){
+      tab2=true
+    }
+    this.setState({
+      showT:e.target.name,
+      tab1:tab1,
+      tab2:tab2
+    })
   }
 
   componentDidMount = () =>{
@@ -38,6 +53,7 @@ export default class JobNav extends Component {
   }
   
   render() {
+
     return (
       <div>
         <Nav fill variant="tabs" defaultActiveKey="/home">
@@ -45,11 +61,13 @@ export default class JobNav extends Component {
             <Nav.Link
             onClick={this.showStuff}
             name="Prequests"
+            disabled={this.state.tab1}
             >Pending requests </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link 
             name="Assigned"
+            disabled={this.state.tab2}
             onClick={this.showStuff}
             >Assigned</Nav.Link>
           </Nav.Item>

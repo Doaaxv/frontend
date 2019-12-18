@@ -154,7 +154,7 @@ export const Landingpage = () => {
       </Parallax>
 
    
-<!--     <Parallax  blur={{ min: -1, max: 3 }}>
+{/*     <Parallax  blur={{ min: -1, max: 3 }}>
       <div style={{ height: 720 }}>
 
       <div className="free">
@@ -209,12 +209,12 @@ export const Landingpage = () => {
           <img className="map" src={Map} alt="boy" />
           <div className="num">
             <Spring from={{ number: 0 }} to={{ number: 643000000 }}>
-<!--               {props => <div>{props.number}</div>} -->
-<!--             </Spring>
+              {props => <div>{props.number}</div>} 
+            </Spring>
 
             <h1 className="fontstylesaudi">saudi Programmers</h1>
           </div>
-      </Parallax> -->
+      </Parallax>  */}
 
 
 

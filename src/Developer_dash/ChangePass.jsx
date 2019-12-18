@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Alert } from 'react-bootstrap'
 import jwt_decode from 'jwt-decode'
@@ -8,6 +8,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import { useFormik } from 'formik';
 import { localhost } from '../GlobalVars'
+import { Redirect } from 'react-router-dom'
 import '../App.css';
 
 const validate = values => {
@@ -31,6 +32,9 @@ const validate = values => {
 };
 
 const ChangepassForm = () => {
+
+    const [show, setShow] = useState(false);
+
     const formik = useFormik({
         initialValues: {
             password: '',
@@ -63,13 +67,14 @@ const ChangepassForm = () => {
                             showConfirmButton: false,
                             timer: 1500
                           })
-                        
+                          setShow(!show)
                     }
                 })
         },
     });
     return (
         <MDBContainer>
+            {show && <Redirect to={{ pathname: `/dashboard` }} />}
             <MDBRow>
                 <MDBCol md="6">
                     <form>
@@ -113,7 +118,7 @@ const ChangepassForm = () => {
                             <div>{formik.errors.cpassword}</div>
                         ) : null}
                         <MDBBtn id="btn-primary" type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
-                        <MDBBtn id="btn-primary" type="submit" color="primary"  href ="/" >Go Back</MDBBtn>
+                        {/* <MDBBtn id="btn-primary" type="submit" color="primary"  href ="/" >Go Back</MDBBtn> */}
                         </div>
                     </form>
                 </MDBCol>

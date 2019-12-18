@@ -75,7 +75,7 @@ export default class App extends Component {
         {(localStorage.usertoken) ? null: 
         <Route exact path="/Signup-emp" exact component={SignupEmp} />}
 
-        {/* <Route path="/jobs" component={Jobs} /> */}
+        <Route path="/jobs" component={Jobs} />
 
         {/* <Route path="/editprofile" component={EditProfile} /> */}
 

@@ -98,15 +98,6 @@ const EditForm = () => {
                         {formik.touched.username && formik.errors.username ? (
                             <div>{formik.errors.username}</div>
                         ) : null}
-                        <MDBInput
-                            label="Link"
-                            id="link"
-                            name="link"
-                            type="text"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.link}
-                        />
                         <MDBBtn id="btn-primary" color="primary" href = "/changepassword" >Change password</MDBBtn>
                         <MDBBtn id="btn-primary" type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
                     </form>
