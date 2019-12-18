@@ -19,9 +19,6 @@ class SideNav extends React.Component {
       this.setState({ userType: decoded.user.role })
     }
 
-    // if(window.location.pathname === '/CustomerLogin' ){
-    //   this.setState({hideNavItem: true})
-    // }
   }
 
   logout =()=>{

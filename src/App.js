@@ -5,7 +5,6 @@ import Landingpage from "./Components/Landingpage"
 import SideNav from "./Components/SideNav"
 import Portfolio from "./portfolio/Portfolio"
 import Jobs from "./JobsComponents/JobsList"
-
 import DevDash from "./Developer_dash/Developer_dash"
 import Login from "./Atho/Login"
 import SignupEmp from "./Atho/Signup_emp"
@@ -14,14 +13,10 @@ import EditProfile from "./Developer_dash/Editprofile"
 import changepassword from "./Developer_dash/ChangePass"
 import Username from "./Developer_dash/GetUsernamePage"
 import Projects from "./Developer_dash/project/ProjectsPage"
-
 // import Projects from "./Developer_dash/ProjectsPage"
 // import AddProject from "./Developer_dash/AddProject"
-
 import Logo from "./Components/logo"
-
 import AddProject from "./Developer_dash/project/AddProject"
-
 import Signup from "./Atho/Signup_emp"
 import addPortfolio from "./portfolio/AddPortfolio"
 import EditProject from "./Developer_dash/project/EditProject"
@@ -80,7 +75,6 @@ export default class App extends Component {
         <Route path = "/addjobs" component = {addjobs}/>
         {/* <Route path = "/EditProject" component={EditProject}/> */}
 
-       {/* <Route exact path="/Try" exact component={Try}/> */}
        <Route path = "/dashboard" component={DevDash}/>
        <Route path="/jobslist" component={JobListEmp}/>
        {/* <Route path ="/uploadimage" component={UploadImage}/> */}

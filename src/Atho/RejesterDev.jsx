@@ -3,8 +3,7 @@ import SignupDev from "./Signup_dev"
 import AddPort from "../portfolio/AddPortfolio"
 import img1 from "../Images/img1.png"
 import './Atho.css'
-import Portfolio from "../portfolio/Portfolio"
-import { Button } from 'react-bootstrap';
+
 export default class RejesterDev extends Component {
 
     state={

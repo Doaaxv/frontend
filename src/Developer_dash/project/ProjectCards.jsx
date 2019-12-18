@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Card, Button, Nav } from "react-bootstrap";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import axios from "axios"
+import './project.css'
 import {localhost} from "../../GlobalVars"
 import ViewProject from "./ViewProject";
 import { Redirect } from 'react-router-dom'
@@ -13,7 +16,15 @@ state = {
     console.log(project)
     axios.delete(`${localhost}/project/${this.props.data._id}`)
     .then(result=>{
-      alert("deleted successfully")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'deleted successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
+     
       window.location.reload()
       console.log(result)
     } ).catch(err=>console.log(err))
@@ -35,8 +46,8 @@ state = {
           <Card.Body>
             <Card.Img variant="top" src={this.props.data.image}  style={{ width: "18rem" }} />
             <Card.Text>{this.props.data.description}</Card.Text>
-            <Button onClick={this.editProject}>Edit project</Button>
-            <Button onClick = {this.deleteProject}>delete project</Button>
+            <Button  id="btn-primary" onClick={this.editProject}>Edit project</Button>
+            <Button id="btn-primary" onClick = {this.deleteProject}>delete project</Button>
           </Card.Body>
         </Card>
       </div>

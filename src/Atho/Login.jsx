@@ -1,10 +1,11 @@
-
 import React ,{ useState } from 'react';
 import img1 from '../Images/img1.png'
 import { useFormik } from 'formik';
 import Typical from 'react-typical'
 import { login } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import "./Atho.css"
@@ -39,12 +40,37 @@ const LoginForm = () => {
       login(values)
       .then(res =>{
         if(res.data=="1"){
-          alert("password is incorrect")
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'warning',
+            title: 'password is incorrect',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+         
         }else if(res.data=="2"){
-          alert("email not found")
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: 'email not found',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
         }else{
           localStorage.setItem('usertoken' , res.data)
-          alert("login successfully")
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'login successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
           console.log(jwt_decode(localStorage.usertoken).user.username)
           setUsername(jwt_decode(localStorage.usertoken).user.username)
           setShow(!show)
@@ -93,7 +119,8 @@ const LoginForm = () => {
             {formik.touched.password && formik.errors.password ? (
               <div>{formik.errors.password}</div>
             ) : null}
-            <MDBBtn type="submit" color="primary">Login</MDBBtn>
+            <button type="submit" className="bot" >Login</button >
+          
           </form>
         </MDBCol>
       </MDBRow>

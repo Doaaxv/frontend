@@ -19,6 +19,7 @@ import "./slider-animations.css";
 import "./styless.css";
 import "react-animated-slider/build/horizontal.css";
 import "../App.css";
+import portfolio from "../Images/portfolio.png"
 import { Card } from "react-bootstrap";
 
 const styles = { fontFamily: "sans-serif", textAlign: "center" };
@@ -100,74 +101,6 @@ export const Landingpage = () => {
       </div>
     </Parallax>
 
-{/* 1 */}
-
-   
-    <Parallax  blur={{ min: -1, max: 3 }}>
-      <div style={{ height: 720 }}>
-
-      <div className="free">
-     <Card style={{ width: '18rem' , height: '21rem' }}>
-      <Card.Img variant="top"  className="imgLandpage" src={Postjobs} />
-      <Card.Body>
-       <Card.Title className="fontstyle" >Post a job</Card.Title>
-      <Card.Text className="fontstyleInsideCard" >
-      It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
-      </Card.Text>
-     </Card.Body>
-     </Card> 
-   
-      <Card style={{ width: '18rem' , height: '21rem' }}>
-      <Card.Img variant="top" className="imgLandpage" src={free} />
-      <Card.Body>
-       <Card.Title className="fontstyle" >Choose freelancers</Card.Title>
-      <Card.Text className="fontstyleInsideCard" >
-      Whatever your needs, there will be a freelancer to get it done: from web design, mobile app development, virtual assistants,
-       product manufacturing, and graphic design (and a whole lot more).
-      </Card.Text>
-     </Card.Body>
-     </Card>
-   
-      <Card style={{ width: '18rem' , height: '21rem' }}>
-      <Card.Img variant="top"  src="holder.js/100px180" />
-      <Card.Body>
-       <Card.Title className="fontstyle" >Portfolio</Card.Title>
-      <Card.Text className="fontstyleInsideCard" >
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-      </Card.Text>
-     </Card.Body>
-     </Card> 
-     <Card style={{ width: '18rem' , height: '21rem' }}>
-      <Card.Img variant="top" className="imgLandpage" src={MeetUp} />
-      <Card.Body>
-       <Card.Title className="fontstyle" >MeetUp</Card.Title>
-      <Card.Text className="fontstyleInsideCard"  >
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-      </Card.Text>
-     </Card.Body>
-     </Card>
-     <br/>
- 
-</div>
-
-      </div>
-    </Parallax>
-
-          <img className="map" src={Map} alt="boy" />
-          <div className="num">
-            <Spring from={{ number: 0 }} to={{ number: 643000000 }}>
-              {props => <div>{props.number}</div>}
-            </Spring>
-
-            <h1 className="fontstylesaudi">saudi Programmers</h1>
-          </div>
-        </div>
-      </Parallax>
-
-      {/* 1 */}
-
       <Parallax blur={{ min: -1, max: 3 }}>
         <div style={{ height: 720 }}>
           <div className="free">
@@ -198,7 +131,7 @@ export const Landingpage = () => {
             </Card>
 
             <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" className="imgLandpage" src={portfolio} />
               <Card.Body>
                 <Card.Title className="fontstyle">Portfolio</Card.Title>
                 <Card.Text className="fontstyleInsideCard">
@@ -241,9 +174,6 @@ export const Landingpage = () => {
           </Slider>
         </div>
       </Parallax>
-
-      {/* 2 */}
-
       <h1 className="divider">| | |</h1>
       <h1 className="divider">| | |</h1>
 
@@ -288,7 +218,8 @@ export const Landingpage = () => {
         </div>
       </Parallax>
       <div />
-    </div>
-  );
+   
+      </div>
+  )
 };
 export default Landingpage;
