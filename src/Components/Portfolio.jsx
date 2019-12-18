@@ -35,7 +35,6 @@ export default function Portfolio (props) {
 
   const myRef = useRef(null)
 
-  // useMountEffect(() => scrollToRef(myRef))
   
 
   const [showText, setShowText] = useState(false);

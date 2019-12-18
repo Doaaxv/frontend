@@ -5,11 +5,9 @@ export default class EemDashNav extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
-          {/* {/* <Navbar.Brand href="///">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-           <Navbar.Collapse id="basic-navbar-nav">
-          
+      <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand href="///">         </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
               {/* <Nav.Link href="/EmpDash/editprofile">Edit profile</Nav.Link> */}
               <Nav.Link href="">Projects</Nav.Link> */}

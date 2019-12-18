@@ -83,7 +83,7 @@ const validate = values => {
                 {formik.touched.github && formik.errors.github ? (
                   <div>{formik.errors.github}</div>
                 ) : null}
-                <MDBBtn type="submit" color="primary">Edit</MDBBtn>
+                <MDBBtn id="btn-primary" type="submit" color="primary">Edit</MDBBtn>
               </form>
             </MDBCol>
           </MDBRow>

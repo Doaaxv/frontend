@@ -1,10 +1,8 @@
 import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import './Atho.css'
 import hire from '../Images/m.png'
 import { Redirect } from 'react-router-dom'
 
@@ -80,7 +78,7 @@ const SignupForm = () => {
        <img style={{ width: '100%', height: '100%'  }}  className="background"
                 src={hire} />
     <MDBContainer className="register" >
-   <h1 style={{ color: "white"   }}  >employee</h1>
+   <h1  className="titleEmp" >Employee</h1>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -149,7 +147,9 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <MDBBtn type="submit" color="primary">Register</MDBBtn>
+
+<button type="submit" className="bot"  >Register</button >
+          
           </form>
         </MDBCol>
       </MDBRow>
