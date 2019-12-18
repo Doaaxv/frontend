@@ -27,7 +27,6 @@ export default class JobRequests extends Component {
         return (
             <div>
                 {this.state.jobs.length>0 && this.state.jobs.map(item=>console.log(item.title))}
-                
             </div>
         )
     }

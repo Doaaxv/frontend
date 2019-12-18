@@ -4,7 +4,8 @@ import { addpro } from './functionPro'
 import { Redirect } from 'react-router-dom'
 import Typical from 'react-typical'
 import "../Atho/Atho.css"
-import {Link} from "react-router-dom"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 import login from "../Atho/Login"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
@@ -95,7 +96,16 @@ const AddPortfolio = (props) => {
           console.log("ADDD PROOO SUBBB")
           console.log(r)
           setShow(!show)
-          alert("Successfully added user's information")
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully added your information',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+         
         }
         )
         .catch(err => console.log(err))
@@ -114,11 +124,8 @@ const AddPortfolio = (props) => {
     <MDBContainer className="register">
 
       {show && <Redirect to={{ pathname: `/login` }} />}
-      {/* {show && <Redirect to={{ pathname: `/Portfolio/${props.username}` ,  state: { data: formik.values }  }} />} */}
+
       
-      {/* {show == false && <p>show is {show}</p>}
-      {show == true && <p>show is {show}</p>} */}
-      <p>Developer</p>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -217,11 +224,9 @@ const AddPortfolio = (props) => {
 
             <input type="file" name="files" id="" onChange={buttonClick} />
             <br />
-            <MDBBtn color="primary" onClick={uploadTheImage}>Upload image</MDBBtn>
-
-            <MDBBtn type="submit" color="primary">Submit</MDBBtn>
-
-            {/* <Button type="submit">Submit</Button> */}
+            <button className="bot1" onClick={uploadTheImage}>Upload image </button>
+            <button className="bot" > Submit </button>
+          
           </form>
         </MDBCol>
       </MDBRow>

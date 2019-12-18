@@ -3,9 +3,10 @@ import { useFormik } from 'formik';
 import { register } from './functionAuth'
 import Typical from 'react-typical'
 import "./Atho.css"
-import {Link} from "react-router-dom"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
+
 
 const validate = values => {
   const errors = {};
@@ -71,13 +72,37 @@ const SignupForm = (props) => {
           console.log(r.data)
           if(r.data.msg=="1"){
             console.log("1")
-            alert("Email is already in use")
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Email is already in use',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
           }else if(r.data.msg=="0"){
             console.log("0")
-            alert("username is already in use")
+            
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'username is already in use',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
           }else if(r.data.msg=="3"){
             console.log("3")
-            alert("User registered!")
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Register successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
             console.log(r.data.user)
             props.toggleSub(r.data.userid,r.data.username)
             //redirect to the add portfolio and send the user id with it
@@ -97,8 +122,6 @@ const SignupForm = (props) => {
         loop={Infinity}
         wrapper="p"
       />
-
-
     <MDBContainer className="register">
    
       <MDBRow >
@@ -182,7 +205,7 @@ const SignupForm = (props) => {
             ) : null}
 
 
-            <button type="submit" className="bot"  >Register</button >
+            <button type="submit" className="bot">Register</button >
           </form>
         </MDBCol>
       </MDBRow>

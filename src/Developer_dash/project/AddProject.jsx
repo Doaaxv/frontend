@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import './project.css'
 import { useFormik } from 'formik';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import { Navbar,Nav} from "react-bootstrap";
+
 import Axios from 'axios';
 import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
@@ -30,13 +33,21 @@ const AddProjectForm = () => {
         onSubmit: async (values) => {
           Axios.post(`${localhost}/project/create`,values)
           .then(result=>{
-            alert("successfully added project")
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'successfully added project',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            
             console.log(result)})
           .catch(err=>console.log(err))
         },
       });
       return (
-        <div>
+        <div className="AddProject" id = "myform">
        <br/>
         <MDBContainer>
           <MDBRow>
@@ -77,7 +88,7 @@ const AddProjectForm = () => {
                 {formik.touched.image && formik.errors.image ? (
                   <div>{formik.errors.image}</div>
                 ) : null}
-                <MDBInput
+                <MDBInput 
                   label="Github"
                   id="github"
                   name="github"
@@ -89,7 +100,7 @@ const AddProjectForm = () => {
                 {formik.touched.github && formik.errors.github ? (
                   <div>{formik.errors.github}</div>
                 ) : null}
-                <MDBBtn type="submit" color="primary">Add</MDBBtn>
+                <MDBBtn  id="btn-primary" type="submit" color="primary">Add</MDBBtn>
               </form>
             </MDBCol>
           </MDBRow>

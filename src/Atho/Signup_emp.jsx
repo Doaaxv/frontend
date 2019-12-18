@@ -1,10 +1,10 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import './Atho.css'
+import hire from '../Images/m.png'
+import { Redirect } from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
@@ -38,12 +38,12 @@ const validate = values => {
     }
   }
 
-
   return errors;
 };
 
 const SignupForm = () => {
 
+  const [show, setShow] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -61,6 +61,7 @@ const SignupForm = () => {
           if(res.data.msg=="1"){
             alert("Email is already in use")
           }else if(res.data.msg=="3"){
+            setShow(!show)
             alert("User registered!")
           }
         })
@@ -68,9 +69,15 @@ const SignupForm = () => {
     },
   });
   return (
-    <MDBContainer className="register" style={{background:"pink"}}>
-<p className="logo">DDW</p>
-      <p>employee</p>
+
+    <div>
+      {show && <Redirect to={{ pathname: `/login` }} />}
+
+      
+       <img style={{ width: '100%', height: '100%'  }}  className="background"
+                src={hire} />
+    <MDBContainer className="register" >
+   <h1  className="titleEmp" >Employee</h1>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
@@ -99,6 +106,7 @@ const SignupForm = () => {
             {formik.touched.lastname && formik.errors.lastname ? (
               <div>{formik.errors.lastname}</div>
             ) : null}
+
 
             <MDBInput
               label="Email"
@@ -138,11 +146,14 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <MDBBtn type="submit" color="primary">Register</MDBBtn>
+
+<button type="submit" className="bot"  >Register</button >
+          
           </form>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
   );
 };
 

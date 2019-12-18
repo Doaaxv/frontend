@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import DashEmpNavBar from "./EemDashNav";
-import projectNav from "./project/ProjectNav";
+
 import JobNav from "./jobs/JobNav";
 
-import EditProfile from "./Editprofile";
-import Projects from "./project/ProjectsPage";
-import addjobs from "./jobs/Addjobs";
+// import EditProfile from "./Editprofile";
+import Addjobs from "./jobs/AddJob";
 
 export default class Employer_dash extends Component {
   render() {

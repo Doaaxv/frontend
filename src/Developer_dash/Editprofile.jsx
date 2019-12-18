@@ -107,8 +107,8 @@ const EditForm = () => {
                             onBlur={formik.handleBlur}
                             value={formik.values.link}
                         />
-                        <MDBBtn color="primary" href = "/changepassword" >Change password</MDBBtn>
-                        <MDBBtn type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
+                        <MDBBtn id="btn-primary" color="primary" href = "/changepassword" >Change password</MDBBtn>
+                        <MDBBtn id="btn-primary" type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
                     </form>
                 </MDBCol>
             </MDBRow>
