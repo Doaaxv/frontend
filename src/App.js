@@ -33,6 +33,8 @@ import axios from 'axios'
 import Register from "./Atho/RejesterDev"
 import JobListEmp from "./Employeer_dash/JobsListEmp"
 
+import JobNav from "./Employeer_dash/jobs/JobNav"
+
 import dotenv from 'dotenv';
 dotenv.config();
 // import UploadImage from "./ImageUpload/UploadImage"
@@ -97,6 +99,7 @@ export default class App extends Component {
 
        {/* <Route path = "/JobRequests" component={JobRequests}/> */}
        <Route path = "/EmpDash" component = {EmpDash}/>
+       <Route path = "/jobnav" component={JobNav}/>
        </Router>
     )
   }

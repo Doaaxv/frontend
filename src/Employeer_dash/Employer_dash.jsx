@@ -15,13 +15,11 @@ export default class Employer_dash extends Component {
         <DashEmpNavBar/>
         <br/>
         <Router>
-        <Route path="EmpDash/EmpJobs" component={JobNav} />
-
-          {/* <Route path="/EmpDash/Emp-editprofile" component={EditProfile} /> */}
-          {/* <Route path="/EmpDash/Emp-Projects" component={projectNav} /> */}
-          
-          {/* <Route path="/EmpDash/Emp-Projects/projects" component={Projects} /> */}
-          <Route path="/EmpDash/Emp-Projects/addjobs" component={Addjobs} />
+          <Route path="/EmpDash/Emp-editprofile" component={EditProfile} />
+          <Route path="/EmpDash/Emp-Projects" component={projectNav} />
+          <Route path="/EmpDash/Emp-Jobs" component={JobNav} />
+          <Route path="/EmpDash/Emp-Projects/projects" component={Projects} />
+          <Route path="/EmpDash/Emp-Projects/addjobs" component={addjobs} />
         </Router>
       </div>
     );

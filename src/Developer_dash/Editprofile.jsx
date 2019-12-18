@@ -25,18 +25,35 @@ const validate = values => {
 
 const EditForm = () => {
     
-    // console.log(jwt_decode(localStorage.usertoken))
     const formik = useFormik({
         initialValues: {
             firstname: jwt_decode(localStorage.usertoken).user.firstname,
             lastname:jwt_decode(localStorage.usertoken).user.lastname,
-            link: jwt_decode(localStorage.usertoken).user.link,
             username:jwt_decode(localStorage.usertoken).user.username,
             user:jwt_decode(localStorage.usertoken).user
         },
         validate,
         onSubmit: async (values) => {
-            console.log("In submit Handler")
+            var uUser = {
+                firstname:values.firstname,
+                lastname:values.lastname,
+                username:values.username
+            }
+
+            axios.put(`${localhost}/user/changedetails/${formik.values.user._id}`,uUser)
+            .then(res=>{
+                if(res.data.msg=="2"){
+                    alert("Successfully Updated")
+                    axios.post(`${localhost}/user/edit/token`, res.data.user)
+                    .then ((fes)=> {
+                      localStorage.setItem('usertoken' , fes.data)
+                      window.location.reload()
+                    })
+                }else{
+                    alert("Username already taken")
+                }
+                })
+            .catch(err=>{console.log(err)})
         },
     });
     return (

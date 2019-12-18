@@ -31,7 +31,6 @@ const LoginForm = () => {
   const [username,setUsername] = useState(false);
   const [emp,setEmp] = useState(false);
 
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -65,24 +64,27 @@ const LoginForm = () => {
         }else{
           localStorage.setItem('usertoken' , res.data)
 
-          Swal.fire({
+            Swal.fire({
             position: 'top-end',
             icon: 'success',
             title: 'login successfully',
             showConfirmButton: false,
             timer: 1500
           })
-          
-          console.log(jwt_decode(localStorage.usertoken).user.username)
-          setUsername(jwt_decode(localStorage.usertoken).user.username)
-          console.log(jwt_decode(localStorage.usertoken).user.role)
-
+        
           if(jwt_decode(localStorage.usertoken).user.role=="1"){
+            console.log(jwt_decode(localStorage.usertoken).user.role)
             setUsername(jwt_decode(localStorage.usertoken).user.username)
             setShow(!show)
           }else{
-            setEmp(!emp)
-          }
+              Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'error',
+            showConfirmButton: false,
+            timer: 1500
+          })
+            console.log(jwt_decode(localStorage.usertoken).user.role)
           
         } 
         })
@@ -102,7 +104,12 @@ const LoginForm = () => {
 
     <MDBContainer className="register" >
       {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
-      {emp && <Redirect to={{ pathname: `/EmpDash` }} />}
+      
+
+      {emp && <Redirect to={{ pathname: `/` }} />}
+
+<!--       {emp && <Redirect to={{ pathname: `/EmpDash` }} />} -->
+
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>  
