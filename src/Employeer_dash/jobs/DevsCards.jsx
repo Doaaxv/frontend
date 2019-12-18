@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import { localhost } from "../GlobalVars"
+import { localhost } from "../../GlobalVarsars"
 
 export default class DevsCards extends Component {
 
@@ -21,6 +21,7 @@ export default class DevsCards extends Component {
                 console.log(result)
                 // console.log("RESULT")
                 this.setState({user:result.data})
+                // window.location.reload()
                 //refresh the page HEREEEEEEEEEEEEEEEEEEEE/////////////////////////////////////////////////
             }
             )
