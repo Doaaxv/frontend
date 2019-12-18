@@ -1,25 +1,23 @@
 import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
-import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import './Atho.css'
 import hire from '../Images/m.png'
 import { Redirect } from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+  if (!values.firstname) {
+    errors.firstname = 'Required';
+  } else if (values.firstname.length > 15) {
+    errors.firstname = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.lastname) {
+    errors.lastname = 'Required';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -49,8 +47,8 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       cpassword: '',
@@ -62,17 +60,16 @@ const SignupForm = () => {
         .then(res => {
           if(res.data.msg=="1"){
             alert("Email is already in use")
-          }else if(res.data.msg=="0"){
-            alert("username is already in use")
           }else if(res.data.msg=="3"){
             setShow(!show)
             alert("User registered!")
-          }}
-        )
+          }
+        })
         .catch(err => console.log(err))
     },
   });
   return (
+
     <div>
       {show && <Redirect to={{ pathname: `/login` }} />}
 
@@ -80,34 +77,34 @@ const SignupForm = () => {
        <img style={{ width: '100%', height: '100%'  }}  className="background"
                 src={hire} />
     <MDBContainer className="register" >
-   <h1 style={{ color: "white"   }}  >employee</h1>
+   <h1  className="titleEmp" >Employee</h1>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
               label="First name"
-              id="firstName"
-              name="firstName"
+              id="firstname"
+              name="firstname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.firstname}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div>{formik.errors.firstname}</div>
             ) : null}
 
             <MDBInput
               label="Last name"
-              id="lastName"
-              name="lastName"
+              id="lastname"
+              name="lastname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.lastName}
+              value={formik.values.lastname}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div>{formik.errors.lastname}</div>
             ) : null}
 
 
@@ -149,7 +146,9 @@ const SignupForm = () => {
               <div>{formik.errors.cpassword}</div>
             ) : null}
 
-            <MDBBtn type="submit" color="primary">Register</MDBBtn>
+
+<button type="submit" className="bot"  >Register</button >
+          
           </form>
         </MDBCol>
       </MDBRow>

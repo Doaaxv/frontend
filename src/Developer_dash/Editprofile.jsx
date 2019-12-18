@@ -25,18 +25,35 @@ const validate = values => {
 
 const EditForm = () => {
     
-    // console.log(jwt_decode(localStorage.usertoken))
     const formik = useFormik({
         initialValues: {
             firstname: jwt_decode(localStorage.usertoken).user.firstname,
             lastname:jwt_decode(localStorage.usertoken).user.lastname,
-            link: jwt_decode(localStorage.usertoken).user.link,
             username:jwt_decode(localStorage.usertoken).user.username,
             user:jwt_decode(localStorage.usertoken).user
         },
         validate,
         onSubmit: async (values) => {
-            console.log("In submit Handler")
+            var uUser = {
+                firstname:values.firstname,
+                lastname:values.lastname,
+                username:values.username
+            }
+
+            axios.put(`${localhost}/user/changedetails/${formik.values.user._id}`,uUser)
+            .then(res=>{
+                if(res.data.msg=="2"){
+                    alert("Successfully Updated")
+                    axios.post(`${localhost}/user/edit/token`, res.data.user)
+                    .then ((fes)=> {
+                      localStorage.setItem('usertoken' , fes.data)
+                      window.location.reload()
+                    })
+                }else{
+                    alert("Username already taken")
+                }
+                })
+            .catch(err=>{console.log(err)})
         },
     });
     return (
@@ -81,17 +98,8 @@ const EditForm = () => {
                         {formik.touched.username && formik.errors.username ? (
                             <div>{formik.errors.username}</div>
                         ) : null}
-                        <MDBInput
-                            label="Link"
-                            id="link"
-                            name="link"
-                            type="text"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.link}
-                        />
-                        <MDBBtn color="primary" href = "/changepassword" >Change password</MDBBtn>
-                        <MDBBtn type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
+                        <MDBBtn id="btn-primary" color="primary" href = "/changepassword" >Change password</MDBBtn>
+                        <MDBBtn id="btn-primary" type="submit" color="primary" onClick={formik.handleSubmit}>Submit</MDBBtn>
                     </form>
                 </MDBCol>
             </MDBRow>

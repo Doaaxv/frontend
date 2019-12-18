@@ -4,7 +4,7 @@ import axios from "axios"
 import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import AddJob from "./AddJob"
-import JobsCards from "./JobsCards"
+import JobsCards from "./"
 
 export default class JobNav extends Component {
 

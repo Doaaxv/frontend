@@ -4,7 +4,8 @@ import { addpro } from './functionPro'
 import { Redirect } from 'react-router-dom'
 import Typical from 'react-typical'
 import "../Atho/Atho.css"
-import {Link} from "react-router-dom"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 import login from "../Atho/Login"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
@@ -95,7 +96,16 @@ const AddPortfolio = (props) => {
           console.log("ADDD PROOO SUBBB")
           console.log(r)
           setShow(!show)
-          alert("Successfully added user's information")
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully added your information',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+         
         }
         )
         .catch(err => console.log(err))

@@ -5,7 +5,6 @@ import Landingpage from "./Components/Landingpage"
 import SideNav from "./Components/SideNav"
 import Portfolio from "./portfolio/Portfolio"
 import Jobs from "./JobsComponents/JobsList"
-
 import DevDash from "./Developer_dash/Developer_dash"
 import Login from "./Atho/Login"
 import SignupEmp from "./Atho/Signup_emp"
@@ -18,11 +17,8 @@ import Job from "./Employeer_dash/jobs/JobNav"
 
 // import Projects from "./Developer_dash/ProjectsPage"
 // import AddProject from "./Developer_dash/AddProject"
-
 import Logo from "./Components/logo"
-
 import AddProject from "./Developer_dash/project/AddProject"
-
 import Signup from "./Atho/Signup_emp"
 import addPortfolio from "./portfolio/AddPortfolio"
 import EditProject from "./Developer_dash/project/EditProject"
@@ -36,6 +32,8 @@ import EmpDash from "./Employeer_dash/Employer_dash"
 import axios from 'axios'
 import Register from "./Atho/RejesterDev"
 import JobListEmp from "./Employeer_dash/JobsListEmp"
+
+import JobNav from "./Employeer_dash/jobs/JobNav"
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -76,7 +74,7 @@ export default class App extends Component {
         {(localStorage.usertoken) ? null: 
         <Route exact path="/Signup-emp" exact component={SignupEmp} />}
 
-        {/* <Route path="/jobs" component={Jobs} /> */}
+        <Route path="/jobs" component={Jobs} />
 
         {/* <Route path="/editprofile" component={EditProfile} /> */}
 
@@ -101,6 +99,7 @@ export default class App extends Component {
 
        {/* <Route path = "/JobRequests" component={JobRequests}/> */}
        <Route path = "/EmpDash" component = {EmpDash}/>
+       <Route path = "/jobnav" component={JobNav}/>
        </Router>
     )
   }
