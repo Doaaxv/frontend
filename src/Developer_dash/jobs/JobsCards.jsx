@@ -5,7 +5,6 @@ export default class JobsCards extends Component {
         return (
             <div>
                 <Card>
-                    <Card.Header></Card.Header>
                     <Card.Body>
                         <h1>{this.props.data.title}</h1>
                         <Card.Text>

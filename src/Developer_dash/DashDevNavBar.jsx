@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Navbar,Nav,} from "react-bootstrap";
 import "../dashbord.css"
+import jwt_decode from 'jwt-decode'
 
 export default class DashDevNavBar extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class DashDevNavBar extends Component {
               <Nav.Link href="/dashboard/Dev-Projects">Projects</Nav.Link>
               <Nav.Link href="/dashboard/Dev-Jobs">Jobs</Nav.Link>
               <Nav.Link>Chat</Nav.Link>
-              <Nav.Link>Website</Nav.Link>
+              <Nav.Link href={"/Portfolio/"+jwt_decode(localStorage.usertoken).user.username} >Portfolio</Nav.Link>
              </Nav>
           </Navbar.Collapse>
           </Navbar>

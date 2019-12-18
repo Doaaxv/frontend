@@ -6,7 +6,7 @@ export default class JobNav extends Component {
     return (
 
       <div>
-        <br/>
+        {/* <br/>
         <Nav fill variant="tabs" defaultActiveKey="/home">
         <Nav.Item>
             <Nav.Link href="/">Create Job </Nav.Link>
@@ -24,7 +24,7 @@ export default class JobNav extends Component {
           <Nav.Item>
             <Nav.Link href="/">History</Nav.Link>
           </Nav.Item>
-        </Nav>
+        </Nav> */}
       </div>
     );
   }
