@@ -2,6 +2,8 @@ import React , { useState } from 'react'
 import { useFormik } from 'formik';
 import { addpro } from './functionPro'
 import { Redirect } from 'react-router-dom'
+import Typical from 'react-typical'
+import "../Atho/Atho.css"
 import {Link} from "react-router-dom"
 import login from "../Atho/Login"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
@@ -77,15 +79,19 @@ import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
     });
     console.log( formik.values)
   return (
-    <MDBContainer>
+    <div>
+
+<Typical className="deverlperReg"
+        steps={['Enter your Informati', 1500, 'Enter your Information ....', 50000]}
+        loop={Infinity}
+        wrapper="p"
+      />
+
+    <MDBContainer className="register">
 
       {show && <Redirect to={{ pathname: `/login`}}/> }
        {/* {show && <Redirect to={{ pathname: `/Portfolio/${props.username}` ,  state: { data: formik.values }  }} />} */}
 
-  
-      {/* {show == false && <p>show is {show}</p>}
-      {show == true && <p>show is {show}</p>} */}
-    <p>Developer</p>
     <MDBRow>
       <MDBCol md="6">
         <form onSubmit={formik.handleSubmit}>
@@ -193,6 +199,7 @@ import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
       </MDBCol>
     </MDBRow>
   </MDBContainer>
+  </div>
   )
 };
 

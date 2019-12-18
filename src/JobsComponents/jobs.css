@@ -1,22 +1,5 @@
-
-
-/* Auto Sug CSS */
-/* .html{
-  background-image: url('../Images/img1.png');
-  
-} */
-
-/* html { background-image: url("../Images/img1.png");
-  background-size: 1500px;
-  background-repeat: no-repeat;
-} */
-
-/* .react-autosuggest__container {
-    /* position: relative; */
-
-/* } */
-   */
-  .react-autosuggest__input {
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+ .react-autosuggest__input {
     width: 240px;
     height: 40px;
     padding: 10px 20px;
@@ -106,13 +89,16 @@
     height: 0%;
   }
    .textBackground{
+    font-family: 'Playfair Display', serif;
     display: inline;
     position: absolute;
-    top : 45%;
-    left: 2%;
+    z-index: 1100;
+    top : 35%;
+    left: 12%;
     width:70%;
     color: white;
-    font-size: 250%;
+    font-size: 450%;
+    font-weight: 20%;
    
  
   }
@@ -120,3 +106,58 @@
     color: #000;
     text-align: center;
   }
+  .textCareer{
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    z-index: 1100;
+    top : 55%;
+    left: 12%;
+    -webkit-column-count: 2; /* Old Chrome, Safari and Opera */
+    -moz-column-count: 2; /* Old Firefox */
+    column-count: 2;
+    color: white;
+    font-size: 130%;
+  }
+  .arroww{
+    position: absolute;
+    z-index: 1100;
+    top : 92%;
+    left: 47%;
+  }
+
+  /*animated scroll arrow animation*/
+  .arrow{
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.arrow span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid rgb(255, 255, 255);
+    border-right: 5px solid rgb(255, 255, 255);
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+.arrow span:nth-child(2){
+    animation-delay: -0.2s;
+}
+.arrow span:nth-child(3){
+    animation-delay: -0.4s;
+}
+@keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}

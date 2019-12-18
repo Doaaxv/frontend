@@ -6,3 +6,69 @@
     margin-left: 35%;
     margin-top: 10%; 
 }
+.register{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
+/* body {
+    background-image: url("../Images/img1.png");
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 120%;
+   width: 80px;
+} */
+@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
+.logo{
+    font-family: 'Warnes', cursive;
+  /* font-family: 'Mr Bedfort', cursive; */
+  color: white;
+  font-size: 200%;
+  font-weight: lighter;
+ position: absolute;
+ top: -32%;
+ left: 53%;
+}
+.textFormik{
+    color: yellow;
+}
+.deverlperReg{
+    position: absolute;
+    top: 10%;
+    color: white;
+    left: 10%;
+    font-size: 200%;
+}
+.background{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bot{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.664);
+  border: 2px solid rgba(255, 255, 255, 0.424);
+  padding: 10px 26px;
+  left: 40%;
+  
+}
+
+.bot:hover{
+    position: absolute;
+
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+
+  left: 40%;
+  
+}
+.md-form label{
+color: white !important ;
+size: 90%;
+}
+
+
+
+
+
