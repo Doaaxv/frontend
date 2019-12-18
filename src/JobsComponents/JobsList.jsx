@@ -10,67 +10,27 @@ import { Col, Row, Container, Button } from 'react-bootstrap';
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 import { SliderRail, Handle, Track, Tick } from "./SliderComponent";
 import Jobs from "../Images/jobs.png"
+import jwt_decode from 'jwt-decode'
+import Axios from 'axios';
+import { localhost } from "../GlobalVars"
 
 export default class JobsList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            userID: jwt_decode(localStorage.usertoken).user._id,
+            userRole: jwt_decode(localStorage.usertoken).userrole,
             showColContent: null,
             showCol: false,
+            currentJob: null,
             jobBudgets: [],
             jobSkill: [],
             domain: [],
-            jobs: [{
-                title: "job 1",
-                description: "description 1",
-                price: 5000,
-                technologies: ["ruby", "java", "html"]
-            },
-            {
-                title: "job 2",
-                description: "description 2",
-                price: 2000,
-                technologies: ["ruby", "java", "css"]
-            },
-            {
-                title: "job 3",
-                description: "description 3",
-                price: 10000,
-                technologies: ["javascript", "php"]
-            },
-            {
-                title: "job 4",
-                description: "description 4",
-                price: 15000,
-                technologies: ["ruby", "java"]
-            }
-            ],
-            jobFilter: [{
-                title: "job 1",
-                description: "description 1",
-                price: 5000,
-                technologies: ["ruby", "java", "html"]
-            },
-            {
-                title: "job 2",
-                description: "description 2",
-                price: 20000,
-                technologies: ["ruby", "java", "css"]
-            },
-            {
-                title: "job 3",
-                description: "description 3",
-                price: 10000,
-                technologies: ["javascript", "php"]
-            },
-            {
-                title: "job 4",
-                description: "description 4",
-                price: 1500,
-                technologies: ["ruby", "java"]
-            }
-            ],
+            jobs: []
+            ,
+            jobFilter: []
+            ,
             sliderHandlesVal: [],
             tech: [],
             value: '',
@@ -83,22 +43,36 @@ export default class JobsList extends Component {
     }
 
     componentDidMount = () => {
-        var technologies = []
-        this.state.jobFilter.forEach(item => {
-            item.technologies.map(tech => {
-                if (!technologies.includes(tech)) { technologies.push(tech) }
-            })
-        })
-        
-        var max_val = Math.max.apply(Math, this.state.jobs.map(item => {
-            return item.price
-        }))
-        // var max_val = Math.max(5, 10, 20, 1100) //Math.max(...this.state.budgets)
-        var maxNum = this.maxDigit(max_val)
-        var domain = [0, maxNum];
 
-        const defaultValues = [0, maxNum];
-        this.setState({ tech: technologies, sliderHandlesVal: defaultValues, domain: domain })
+        // axios.post(`${localhost}/UserInfoRoutes/create` ,newuser )
+        Axios.get(`${localhost}/job`)
+            .then(j => {
+                console.log("JOBSSS DATA")
+                console.log(j.data)
+                var technologies = []
+
+                j.data.forEach(item => {
+                    console.log(item)
+                    item.technologies.map(tech => {
+                        if (!technologies.includes(tech)) 
+                        { technologies.push(tech) }
+                    })
+                })
+
+                var max_val = Math.max.apply(Math, j.data.map(item => {
+                    return item.budget
+                }))
+                // var max_val = Math.max(5, 10, 20, 1100) //Math.max(...this.state.budgets)
+                var maxNum = this.maxDigit(max_val)
+                var domain = [0, maxNum];
+
+                const defaultValues = [0, maxNum];
+                this.setState({ tech: technologies, sliderHandlesVal: defaultValues, domain: domain, jobs: j.data,jobFilter:j.data })
+                // this.setState({jobs:j.data})
+            })
+            .catch(err => console.log(err))
+
+
     }
 
     //auto suggestion + filtering functions
@@ -197,7 +171,7 @@ export default class JobsList extends Component {
     onChange = (val) => {
         this.setState({ sliderHandlesVal: val })
         var temp = this.state.jobs.filter(item => {
-            if (val[0] <= item.price && item.price <= val[1]) {
+            if (val[0] <= item.budget && item.budget <= val[1]) {
                 return item
             }
         })
@@ -212,7 +186,12 @@ export default class JobsList extends Component {
     ///show the details column
     showDetails = (item) => {
         var showColContent = <p>{item.title}</p>
-        this.setState({ showColContent, showCol: true })
+        this.setState({ showColContent, showCol: true, currentJob: item })
+    }
+
+    //apply for the job
+    applyForJob = () => {
+        console.log("Apply for job")
     }
 
     render() {
@@ -227,15 +206,15 @@ export default class JobsList extends Component {
         };
 
         return (
-            <Container> 
- 
-          <h1 className="textBackground"> React Reveal</h1>
-      
-<img  className="imgBackground" style={{ height: 850 }} src={Jobs} alt="Portfolio" /> 
-                
+            <Container>
+
+                <h1 className="textBackground"> React Reveal</h1>
+
+                <img className="imgBackground" style={{ height: 850 }} src={Jobs} alt="Portfolio" />
+
                 <Row >
                     {/* Filter column */}
-                    <Col md={3}  className="filterStyle"  >
+                    <Col md={3} className="filterStyle"  >
                         <br />
                         <h4>Salary</h4>
 
@@ -314,7 +293,7 @@ export default class JobsList extends Component {
                                                             type="button"
                                                             className="close"
                                                             aria-label="Close">
-                                                                
+
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -337,7 +316,7 @@ export default class JobsList extends Component {
                                         inputProps={inputProps} />
 
                                     <div className="input-group-append buttonThing ">
-    <button onClick={this.add} className="btn btn-light" type="button"> Add Item</button>
+                                        <button onClick={this.add} className="btn btn-light" type="button"> Add Item</button>
                                     </div>
                                 </Row>
                             </form>}
@@ -345,7 +324,7 @@ export default class JobsList extends Component {
 
 
                     {/* Cards column */}
-                    <Col  className="cardJob" md={this.state.showCol ? 5 : 7} >
+                    <Col className="cardJob" md={this.state.showCol ? 5 : 7} >
                         {this.state.jobFilter.map(item => {
                             return <JCards data={item} showDetails={this.showDetails} />
                         })}
@@ -353,12 +332,32 @@ export default class JobsList extends Component {
 
 
                     {/* detail column */}
-                    {this.state.showCol !== false && this.state.showColContent !== null &&
-                        <Col md={3}  className="applyCard" style={{ height: "30%" }}>
+                    {this.state.showCol !== false && this.state.currentJob != null &&
+                        <Col md={3} className="applyCard" style={{ height: "30%" }}>
                             <Fade left>
                                 <div >
-                                    {this.state.showColContent}
-                                    <Button variant="primary"> Conform Apply</Button>
+                                    {/* {this.state.showColContent} */}
+                                    <p>{this.state.currentJob.title}</p>
+                                    <p>{this.state.currentJob.requests[0]} JOBS REQ</p>
+                                    {!(localStorage.usertoken) ? <Button variant="primary" onClick={this.applyForJob}>Apply(no token)</Button> : null}
+
+
+                                    {/* {this.state.userRole == 2 && <Button variant="primary" onClick={this.applyForJob}>Apply</Button>} */}
+
+                                    {this.state.userRole == 1 &&
+                                        this.state.currentJob.requests &&
+                                        !this.state.currentJob.requests.includes(this.state.userID) &&
+                                        <Button variant="primary" onClick={this.applyForJob}>Apply</Button>}
+
+                                    {this.state.userRole == 1 &&
+                                        this.state.currentJob.requests &&
+                                        this.state.currentJob.requests.includes(this.state.userID) &&
+                                        <Button variant="primary" disabled >Already applied</Button>}
+
+
+
+                                    {/* {(localStorage.usertoken) &&  <Button variant="primary" onClick={this.applyForJob}>Apply</Button>: null } */}
+
                                 </div>
                             </Fade>
                         </Col>}

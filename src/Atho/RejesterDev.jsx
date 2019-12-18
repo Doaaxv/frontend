@@ -25,7 +25,6 @@ export default class RejesterDev extends Component {
         return (
             <div>
                 {console.log(this.state.userid)}
-                <Button>gggg</Button>
                {this.state.show == true && <SignupDev toggleSub={this.toggleSub}/>}
                {this.state.show == false && <AddPort username={this.state.username} user_id={this.state.userid}/>} 
                {/* {this.state.shown === false && <Portfolio user_id={this.state.userid}/>}   */}

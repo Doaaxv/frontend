@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link ,withRouter,browserHistory } from "react-router-dom"
 import Landingpage from "./Components/Landingpage"
 import SideNav from "./Components/SideNav"
 import Portfolio from "./portfolio/Portfolio"
@@ -12,8 +12,8 @@ import SignupDev from "./Atho/Signup_dev"
 import EditProfile from "./Developer_dash/Editprofile"
 import changepassword from "./Developer_dash/ChangePass"
 import Username from "./Developer_dash/GetUsernamePage"
-import Projects from "./Developer_dash/ProjectsPage"
-import AddProject from "./Developer_dash/AddProject"
+// import Projects from "./Developer_dash/ProjectsPage"
+// import AddProject from "./Developer_dash/AddProject"
 import Signup from "./Atho/Signup_emp"
 import addPortfolio from "./portfolio/AddPortfolio"
 import EditProject from "./Developer_dash/project/EditProject"
@@ -57,7 +57,8 @@ export default class App extends Component {
         {/* <Route path ="/dashboard" component={EmployerDash}/> */}
 
         <Route exact path="/addPortfolio" exact component={addPortfolio} />
-        <Route exact path="/Portfolio/:username" exact render={props => (<Portfolio {...props}  data={this.state.data}  />)} />
+        <Route exact path="/Portfolio/:username" exact component={Portfolio}  //render={props => (<Portfolio {...props}  data={this.state.data}  />)}
+         />
         <Route exact path="/login" exact component={Login} />
         <Route exact path="/Signup-dev" exact component={SignupDev} />
         <Route exact path="/Signup-emp" exact component={SignupEmp} />
@@ -65,9 +66,9 @@ export default class App extends Component {
         <Route path="/editprofile" component={EditProfile} />
         <Route path="/changepassword" component={changepassword}/>
         <Route path="/username/:username" component={Username}/>
-        <Route path="/projects" component={Projects}/> 
+        {/* <Route path="/projects" component={Projects}/>  */}
         <Route path="/job" component={Jobs}/>
-        <Route path="/addProject" component={AddProject}/>
+        {/* <Route path="/addProject" component={AddProject}/> */}
        <Route exact path="/Try" exact component={Try}/>
        <Route path = "/dashboard" component={DevDash}/>
        <Route path = "/EditProject" component={EditProject}/>
