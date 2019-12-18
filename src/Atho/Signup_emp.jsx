@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import "./Atho.css"
 import { Col, Row, Form, Container, Button } from 'react-bootstrap';
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
@@ -73,8 +74,8 @@ const SignupForm = () => {
     },
   });
   return (
-    <MDBContainer>
-
+    <MDBContainer className="register" >
+<p className="logo">DDW</p>
       <p>employee</p>
       <MDBRow>
         <MDBCol md="6">

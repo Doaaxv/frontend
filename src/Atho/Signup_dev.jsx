@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { register } from './functionAuth'
+import Typical from 'react-typical'
+import "./Atho.css"
 import {Link} from "react-router-dom"
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import {fileUploadHandler,getImagesUrl} from "../ImageUpload/UploadImage"
@@ -86,10 +88,18 @@ const SignupForm = (props) => {
     },
   });
   return (
-    <MDBContainer>
+    <div>
 
-      <p>Developer</p>
-      <MDBRow>
+<Typical className="deverlperReg"
+        steps={['Developer', 1500, 'Developer registering ....', 50000]}
+        loop={Infinity}
+        wrapper="p"
+      />
+
+
+    <MDBContainer className="register">
+   
+      <MDBRow >
         <MDBCol md="6">
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
@@ -170,11 +180,12 @@ const SignupForm = (props) => {
             ) : null}
 
 
-            <MDBBtn type="submit" color="primary">Register</MDBBtn>
+            <button type="submit" className="bot"  >Register</button >
           </form>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </div>
   );
 };
 

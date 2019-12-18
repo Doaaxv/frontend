@@ -17,7 +17,7 @@ export default class JobsCards extends Component {
                         <p>Job price {this.props.data.price}</p>
                         <p>technologies:  </p>
                         {techs}
-                        <Button variant="primary" onClick={()=>this.props.showDetails(this.props.data)} >Apply</Button>
+                        <Button variant="primary" onClick={()=>this.props.showDetails(this.props.data)} >Show details</Button>
                     </Card.Body>
                 </Card>
                 <br/>
