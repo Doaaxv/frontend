@@ -71,7 +71,7 @@ const AddPortfolio = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      user:"1", //props.user_id,
+      user: props.user_id,
       education: '',
       img: '',
       jobPosition: '',

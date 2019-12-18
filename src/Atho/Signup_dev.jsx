@@ -68,6 +68,7 @@ const SignupForm = (props) => {
         .then(r => {
           console.log(r)
           //1 means email is in use
+          console.log(r.data)
           if(r.data.msg=="1"){
             console.log("1")
             alert("Email is already in use")
@@ -76,10 +77,11 @@ const SignupForm = (props) => {
             alert("username is already in use")
           }else if(r.data.msg=="3"){
             console.log("3")
+            alert("User registered!")
             console.log(r.data.user)
             props.toggleSub(r.data.userid,r.data.username)
             //redirect to the add portfolio and send the user id with it
-            alert("User registered!")
+            
           }
         }
         )

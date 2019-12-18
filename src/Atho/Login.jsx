@@ -47,7 +47,6 @@ const LoginForm = () => {
           alert("login successfully")
           console.log(jwt_decode(localStorage.usertoken).user.username)
           setUsername(jwt_decode(localStorage.usertoken).user.username)
-          
           setShow(!show)
         } 
         })

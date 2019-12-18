@@ -85,7 +85,7 @@ export default class App extends Component {
         {/* <Route path = "/EditProject" component={EditProject}/> */}
 
        {/* <Route exact path="/Try" exact component={Try}/> */}
-       {/* <Route path = "/dashboard" component={DevDash}/> */}
+       <Route path = "/dashboard" component={DevDash}/>
        <Route path="/jobslist" component={JobListEmp}/>
        {/* <Route path ="/uploadimage" component={UploadImage}/> */}
        <Route path="/RegisterDev" component={Register}/>

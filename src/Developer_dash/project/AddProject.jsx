@@ -4,6 +4,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import { Navbar,Nav} from "react-bootstrap";
 import Axios from 'axios';
 import {localhost} from "../../GlobalVars"
+import jwt_decode from 'jwt-decode'
+
 const validate = values => {
     const errors = {};
     if (!values.title) {
@@ -21,12 +23,15 @@ const AddProjectForm = () => {
           description: '',
           image:'',
           github:'',
-          link:''
+          link:'',
+          user:jwt_decode(localStorage.usertoken).user._id
         },
         validate,
         onSubmit: async (values) => {
           Axios.post(`${localhost}/project/create`,values)
-          .then(result=>console.log(result))
+          .then(result=>{
+            alert("successfully added project")
+            console.log(result)})
           .catch(err=>console.log(err))
         },
       });
