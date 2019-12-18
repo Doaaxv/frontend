@@ -5,7 +5,6 @@ import 'sweetalert2/src/sweetalert2.scss'
 import axios from "axios"
 import './project.css'
 import {localhost} from "../../GlobalVars"
-import ViewProject from "./ViewProject";
 import { Redirect } from 'react-router-dom'
 export default class ProjectCards extends Component {
 state = {

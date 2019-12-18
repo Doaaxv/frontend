@@ -19,25 +19,22 @@ export default class JobsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userID: jwt_decode(localStorage.usertoken).user._id,
-            userRole: jwt_decode(localStorage.usertoken).userrole,
+            userID:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user._id:null),
+            userRole:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user.userrole:null), 
             showColContent: null,
             showCol: false,
             currentJob: null,
             jobBudgets: [],
             jobSkill: [],
             domain: [],
-            jobs: []
-            ,
-            jobFilter: []
-            ,
+            jobs: [] ,
+            jobFilter: [] ,
             sliderHandlesVal: [],
             tech: [],
             value: '',
             suggestions: [],
             todo: '',
-            todos: [
-            ].map((text, id) => ({ id, text })),
+            todos: [ ].map((text, id) => ({ id, text })),
         };
         this.state.id = this.state.todos.length;
     }
@@ -370,9 +367,6 @@ export default class JobsList extends Component {
                                         this.state.currentJob.requests &&
                                         this.state.currentJob.requests.includes(this.state.userID) &&
                                         <Button variant="primary" disabled >Already applied</Button>}
-
-
-
                                     {/* {(localStorage.usertoken) &&  <Button variant="primary" onClick={this.applyForJob}>Apply</Button>: null } */}
 
                                 </div>
