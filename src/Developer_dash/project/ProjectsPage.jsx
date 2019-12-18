@@ -22,14 +22,6 @@ export default class ProjectsPage extends Component {
     return (
       <div>
         <br />
-        <Nav fill variant="tabs" defaultActiveKey="/home">
-          <Nav.Item>
-            <Nav.Link href="/dashboard/addProject">add project </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/dashboard/projects">Show project</Nav.Link>
-          </Nav.Item>
-        </Nav>
         {this.state.projects != null &&
           this.state.projects.map(item => <ProjectCards data={item} />)}
       </div>

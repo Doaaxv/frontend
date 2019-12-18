@@ -6,23 +6,6 @@ export default class Addjobs extends Component {
         return (
             <div>
                 <h1>Add Jobs </h1>
-                <Nav fill variant="tabs" defaultActiveKey="/home">
-<Nav.Item>
-<Nav.Link href="/addJob">add jobs </Nav.Link>
- </Nav.Item>
- <Nav.Item>
- <Nav.Link href="/">requests</Nav.Link>
- </Nav.Item>
- <Nav.Item>
-<Nav.Link href="/">Pending requests</Nav.Link>
-</Nav.Item>
-<Nav.Item>
-<Nav.Link href="/">Pending requests</Nav.Link>
-</Nav.Item>
-<Nav.Item>
-<Nav.Link href="/">assigned project </Nav.Link>
- </Nav.Item>
- </Nav>
             </div>
         )
     }

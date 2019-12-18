@@ -22,7 +22,6 @@ export default class JobsListEmp extends Component {
         })
         .catch(err=>console.log(err))
     }
-
     showDetails = (item,job_id) =>{
         console.log("SHOW")
         console.log(item)
@@ -52,9 +51,7 @@ export default class JobsListEmp extends Component {
                         })}
                     </Col>
                     {this.state.job_id != null && this.state.details!=null && this.state.show != false && <Col>
-                      <p>{this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}</p> 
-                            
-                       
+                      <p>{this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}</p>   
                     </Col>}
                 </Row>
             </Container>

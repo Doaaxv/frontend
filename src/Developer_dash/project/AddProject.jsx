@@ -33,14 +33,6 @@ const AddProjectForm = () => {
       return (
         <div>
        <br/>
-       <Nav fill variant="tabs" defaultActiveKey="/home">
-    <Nav.Item>
-    <Nav.Link href="/addProject">add project </Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-    <Nav.Link href="/projects">Show project</Nav.Link>
-    </Nav.Item>
-  </Nav>
         <MDBContainer>
           <MDBRow>
             <MDBCol md="6">

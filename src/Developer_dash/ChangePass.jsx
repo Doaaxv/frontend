@@ -36,7 +36,6 @@ const ChangepassForm = () => {
         },
         validate,
         onSubmit: async (values) => {
-            
             axios.put(`${localhost}/user/changepass/${jwt_decode(localStorage.usertoken).user._id}`, {
                 password: values.password,
                 newPassword: values.newPassword

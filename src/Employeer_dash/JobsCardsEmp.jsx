@@ -16,9 +16,6 @@ export default class JobsCardsEmp extends Component {
         })
         .catch(err=>console.log(err))
     }
-
-
-
     render() {
         return (
             <div>
