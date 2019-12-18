@@ -19,18 +19,16 @@ export default class JobsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userID: jwt_decode(localStorage.usertoken).user._id,
-            userRole: jwt_decode(localStorage.usertoken).userrole,
+            userID: (localStorage.usertoken?jwt_decode(localStorage.usertoken).user._id:null),
+            userRole:    (localStorage.usertoken? jwt_decode(localStorage.usertoken).user.role:null),            
             showColContent: null,
             showCol: false,
             currentJob: null,
             jobBudgets: [],
             jobSkill: [],
             domain: [],
-            jobs: []
-            ,
-            jobFilter: []
-            ,
+            jobs: [],
+            jobFilter: [],
             sliderHandlesVal: [],
             tech: [],
             value: '',
@@ -44,7 +42,6 @@ export default class JobsList extends Component {
 
     componentDidMount = () => {
 
-        // axios.post(`${localhost}/UserInfoRoutes/create` ,newuser )
         Axios.get(`${localhost}/job`)
             .then(j => {
                 console.log("JOBSSS DATA")
@@ -68,6 +65,16 @@ export default class JobsList extends Component {
                 var domain = [0, maxNum];
 
                 const defaultValues = [0, maxNum];
+
+                // var userID = ""
+                // var userRole = ""
+                // if(localStorage.usertoken){
+                //     userID = jwt_decode(localStorage.usertoken).user._id
+                //     userRole = jwt_decode(localStorage.usertoken).user.role
+                // }
+                // console.log(localStorage.usertoken)
+                // userRole:userRole,userID:userID,
+
                 this.setState({ tech: technologies, sliderHandlesVal: defaultValues, domain: domain, jobs: j.data,jobFilter:j.data })
             }// this.setState({jobs:j.data})
             })
@@ -193,10 +200,16 @@ export default class JobsList extends Component {
     //apply for the job
     applyForJob = () => {
         console.log("Apply for job")
+        Axios.put(`${localhost}/job/addreq/${this.state.currentJob._id}`,{requests:this.state.userID})
+        .then(result=>{
+            alert(result.data)
+            console.log(result)})
+        .catch(err=>console.log(err))
+
     }
 
     render() {
-
+        // console.log(this.state.userRole)
         const { value, suggestions } = this.state;
 
         // Autosuggest will pass through all these props to the input.
@@ -356,13 +369,8 @@ export default class JobsList extends Component {
                                     {/* {this.state.showColContent} */}
                                     <p>{this.state.currentJob.title}</p>
                                     <p>{this.state.currentJob.requests[0]} JOBS REQ</p>
-                                    {!(localStorage.usertoken) ? <Button variant="primary" onClick={this.applyForJob}>Apply(no token)</Button> : null}
-
-
-                                    {/* {this.state.userRole == 2 && <Button variant="primary" onClick={this.applyForJob}>Apply</Button>} */}
 
                                     {this.state.userRole == 1 &&
-                                        this.state.currentJob.requests &&
                                         !this.state.currentJob.requests.includes(this.state.userID) &&
                                         <Button variant="primary" onClick={this.applyForJob}>Apply</Button>}
 
@@ -371,9 +379,6 @@ export default class JobsList extends Component {
                                         this.state.currentJob.requests.includes(this.state.userID) &&
                                         <Button variant="primary" disabled >Already applied</Button>}
 
-
-
-                                    {/* {(localStorage.usertoken) &&  <Button variant="primary" onClick={this.applyForJob}>Apply</Button>: null } */}
 
                                 </div>
                             </Fade>

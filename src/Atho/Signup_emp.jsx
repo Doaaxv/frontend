@@ -8,16 +8,16 @@ import './Atho.css'
 
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+  if (!values.firstname) {
+    errors.firstname = 'Required';
+  } else if (values.firstname.length > 15) {
+    errors.firstname = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.lastname) {
+    errors.lastname = 'Required';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -38,9 +38,6 @@ const validate = values => {
     }
   }
 
-  if (!values.username) {
-    errors.username = "Required"
-  }
 
   return errors;
 };
@@ -50,12 +47,11 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       cpassword: '',
-      username: '',
       role:2
     },
     validate,
@@ -64,17 +60,15 @@ const SignupForm = () => {
         .then(res => {
           if(res.data.msg=="1"){
             alert("Email is already in use")
-          }else if(res.data.msg=="0"){
-            alert("username is already in use")
           }else if(res.data.msg=="3"){
             alert("User registered!")
-          }}
-        )
+          }
+        })
         .catch(err => console.log(err))
     },
   });
   return (
-    <MDBContainer className="register" >
+    <MDBContainer className="register" style={{background:"pink"}}>
 <p className="logo">DDW</p>
       <p>employee</p>
       <MDBRow>
@@ -82,41 +76,28 @@ const SignupForm = () => {
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
               label="First name"
-              id="firstName"
-              name="firstName"
+              id="firstname"
+              name="firstname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.firstname}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div>{formik.errors.firstname}</div>
             ) : null}
 
             <MDBInput
               label="Last name"
-              id="lastName"
-              name="lastName"
+              id="lastname"
+              name="lastname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.lastName}
+              value={formik.values.lastname}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
-            ) : null}
-
-            <MDBInput
-              label="Username"
-              id="username"
-              name="username"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.username}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <div>{formik.errors.username}</div>
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div>{formik.errors.lastname}</div>
             ) : null}
 
             <MDBInput

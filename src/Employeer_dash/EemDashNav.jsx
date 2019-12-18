@@ -11,9 +11,9 @@ export default class EemDashNav extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             {" "}
             <Nav className="mr-auto">
-              <Nav.Link href="/dashboard/editprofile">Edit profile</Nav.Link>
-              <Nav.Link href="/dashboard/Emp-Projects">Projects</Nav.Link>
-              <Nav.Link href="/dashboard/Emp-Jobs">Jobs</Nav.Link>
+              <Nav.Link href="/EmpDash/editprofile">Edit profile</Nav.Link>
+              <Nav.Link href="/EmpDash/Emp-Projects">Projects</Nav.Link>
+              <Nav.Link href="/EmpDash/Emp-Jobs">Jobs</Nav.Link>
               <Nav.Link>Chat</Nav.Link>
               <Nav.Link>Website</Nav.Link>
             </Nav>
