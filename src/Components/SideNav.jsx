@@ -1,10 +1,33 @@
-import React from "react"
+import React, { Component } from 'react'
 import "../App.css"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import Signup from "../Atho/Signup_emp"
+import jwt_decode from 'jwt-decode'
+import { withRouter } from 'react-router-dom';
+
 
 class SideNav extends React.Component {
-  state = { state: {showNav: false} }
+
+  state = { state: { showNav: false } }
+
+  componentDidMount() {
+
+    const token = localStorage.usertoken
+
+    if (token) {
+      const decoded = jwt_decode(token)
+      this.setState({ userType: decoded.user.role })
+    }
+
+    // if(window.location.pathname === '/CustomerLogin' ){
+    //   this.setState({hideNavItem: true})
+    // }
+  }
+
+  logout =()=>{
+    localStorage.removeItem('usertoken')
+    this.props.history.push('/')
+        }
 
   openNavClick = e => {
     e.preventDefault()
@@ -53,15 +76,17 @@ class SideNav extends React.Component {
           <a href="#" onClick={this.closeNavClick} class="close-nav">
             &times;
           </a>
-          <Link className="link" to = "/">home page </Link>
-          <Link className="link" to = "/Signup-emp">employeer</Link>
-          <Link className="link" to = "/Jobs"> show job </Link>
-          <Link className="link" to = "/Signup-dev">sign up as Developer</Link>
-          
+          <Link className="link" to="/">Home</Link>
+          <Link className="link" to="/Jobs"> Jobs</Link>
+          {(localStorage.usertoken) ? <Link className="link" to="/dashboard"> Dashboard </Link>: null }
+          {(localStorage.usertoken) ? null : <Link className="link" to="/login">Login</Link>}
+          {(localStorage.usertoken) ? null : <Link className="link" to="/Signup-emp">Sign up as employer</Link>}
+          {(localStorage.usertoken) ? null : <Link className="link" to="/RegisterDev">sign up as Developer</Link>}
+          {(localStorage.usertoken) ? <Link className="link" onClick={this.logout} to="/"> Logout</Link>: null }
         </div>
       </React.Fragment>
     )
   }
 }
 
-export default SideNav
+export default withRouter(SideNav)

@@ -30,6 +30,8 @@ export default function Portfolio (props) {
 
   const [userInfo, setUserInfo] = useState([]);
   const [userInfoExra, setUserInfoExra] = useState([]);
+  const [userProjects,setUserProjects] = useState([]);
+
   useEffect(async() => {
     // const result = await
     await axios.get(`${localhost}/user/username/${props.match.params.username}`)
@@ -38,12 +40,19 @@ export default function Portfolio (props) {
         console.log(result.data)
         setUserInfo(result.data)
 
-       // console.log(result.data.firstname)
-        console.log(result.data._id.data)
+        axios.get(`${localhost}/project/developer/${result.data._id}`)
+        .then(projects=>{
+          setUserProjects(projects.data)
+          console.log("PROJETS")
+          console.log(projects.data)})
+        .catch(err=>console.log(err))
+
 
         axios.get(`${localhost}/UserInfoRoutes/${result.data._id}`)
-        .then(rr=>{console.log(rr)
-        
+        .then(rr=>{
+          // console.log(rr)
+          console.log("UUUUUU")
+        // console.log(result.data._id)
           console.log(rr.data[0])
           setUserInfoExra(rr.data[0])
         
@@ -73,11 +82,12 @@ export default function Portfolio (props) {
 
    
     console.log(userInfo)
+    console.log(userInfoExra)
 
         return (
          <div>  
 
-{ userInfo.length!=0  , userInfoExra.length!=0 &&  <div className="prot">
+      { userInfo && userInfoExra &&  <div className="prot">
        
             
                 <img className="prtimgUser" src={userInfoExra.img} alt="Portfolio" /> 
@@ -163,8 +173,8 @@ export default function Portfolio (props) {
         
         <div ref={myRef} >
           <div className="projectCards"> 
-            {props.data.map( e =>{ 
-          return <UserProject  ele ={e} />})}  
+            {userProjects.length>0 ? userProjects.map( e =>{ 
+          return <UserProject  ele ={e} />}) : <h1>No projects found</h1>   }  
           </div>
           </div>} 
 
