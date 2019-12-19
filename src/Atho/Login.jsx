@@ -28,7 +28,8 @@ const validate = values => {
 
 const LoginForm = () => {
   const [show, setShow] = useState(false);
-  const [username,setUsername] = useState(false);
+  const [username, setUsername] = useState(false);
+  const [emp, setEmp] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -38,45 +39,48 @@ const LoginForm = () => {
     validate,
     onSubmit: async (values) => {
       login(values)
-      .then(res =>{
-        if(res.data=="1"){
+        .then(res => {
 
-          Swal.fire({
-            position: 'top-end',
-            icon: 'warning',
-            title: 'password is incorrect',
-            showConfirmButton: false,
-            timer: 1500
-          })
+          if (res.data == "1") {
 
-         
-        }else if(res.data=="2"){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: 'password is incorrect',
+              showConfirmButton: false,
+              timer: 1500
+            })
 
-          Swal.fire({
-            position: 'top-end',
-            icon: 'info',
-            title: 'email not found',
-            showConfirmButton: false,
-            timer: 1500
-          })
 
-        }else{
-          localStorage.setItem('usertoken' , res.data)
+          } else if (res.data == "2") {
 
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'login successfully',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          
-          console.log(jwt_decode(localStorage.usertoken).user.username)
-          setUsername(jwt_decode(localStorage.usertoken).user.username)
-          setShow(!show)
-        } 
-        })
-      .catch(err=>console.log(err))
+            Swal.fire({
+              position: 'top-end',
+              icon: 'info',
+              title: 'email not found',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+          } else {
+            localStorage.setItem('usertoken', res.data)
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'login successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            if (jwt_decode(localStorage.usertoken).user.role == "1") {
+              setUsername(jwt_decode(localStorage.usertoken).user.username)
+              setShow(!show)
+            } else {
+              setEmp(!emp)
+            }
+          }
+        }).catch(err => console.log(err))
     },
   });
   return (
@@ -90,41 +94,47 @@ const LoginForm = () => {
         wrapper="p"
       />
 
-    <MDBContainer className="register" >
-      {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
-      <MDBRow>
-        <MDBCol md="6">
-          <form onSubmit={formik.handleSubmit}>  
-            <MDBInput
-              label="Email"
-              id="email"
-              name="email"
-              type="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
-            ) : null}
-            <MDBInput
-              label="Password"
-              id="password"
-              name="password"
-              type="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
-            <button type="submit" className="bot" >Login</button >
-          
-          </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+      <MDBContainer className="register" >
+        {show && <Redirect to={{ pathname: `/Portfolio/${username}` }} />}
+
+
+        {emp && <Redirect to={{ pathname: `/` }} />}
+
+        {/* {emp && <Redirect to={{ pathname: `/EmpDash` }} />}  */}
+
+        <MDBRow>
+          <MDBCol md="6">
+            <form onSubmit={formik.handleSubmit}>
+              <MDBInput
+                label="Email"
+                id="email"
+                name="email"
+                type="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
+              <MDBInput
+                label="Password"
+                id="password"
+                name="password"
+                type="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div>{formik.errors.password}</div>
+              ) : null}
+              <button type="submit" className="bot" >Login</button >
+
+            </form>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </div>
   );
 };

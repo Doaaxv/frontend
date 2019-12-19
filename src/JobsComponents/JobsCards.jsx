@@ -5,9 +5,11 @@ import './jobs.css'
 export default class JobsCards extends Component {
     render() {
         var techs = []
+        
         this.props.data.technologies.forEach(item =>
             techs.push(<p>{item}</p>)
         )
+        
         return (
             <Fade top>
                 <Card className="cardJobSt">

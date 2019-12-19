@@ -4,26 +4,27 @@ import axios from 'axios';
 import {localhost} from "../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import JCards from "./JobsCardsEmp"
-import DCards from "./DevsCards"
+import DCards from "./jobs/DevsCards"
 export default class JobsListEmp extends Component {
 
-    state = {jobs:null,
+    state = {
+        jobs:null,
         show:false,
         details:null,
         job_id:null,
-        userId:jwt_decode(localStorage.usertoken).user._id}
+        userId:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user._id:null)}
 
     componentDidMount = () =>{
-        axios.get(`${localhost}/job`)
+        if(localStorage.usertoken){
+        axios.get(`${localhost}/job/employer/${jwt_decode(localStorage.usertoken).user._id}`)
         .then(r=>{
-            console.log("COMPDID MOUT")
-            console.log(r.data)
+            console.log("JOBBBBBBBBB")
             this.setState({jobs:r.data})
         })
-        .catch(err=>console.log(err))
+        .catch(err=>console.log(err))}
     }
+    
     showDetails = (item,job_id) =>{
-        console.log("SHOW")
         console.log(item)
         // var reqs = item.map(res => <p>{res}</p>)
         this.setState({details:item,show:true,job_id:job_id})
@@ -36,7 +37,7 @@ export default class JobsListEmp extends Component {
         }
         return (
             <Container>
-                <h1>Hello</h1>
+                <h1>HelloOOOOOOOOOOOOO</h1>
                 <Row>
                     <Col>
                     {this.state.jobs!=null && this.state.jobs.map(item=>{
@@ -50,9 +51,12 @@ export default class JobsListEmp extends Component {
                             // return <div> <p>{item.title}</p> <button onClick={this.addToReq(item._id)}>submit</button> </div>}
                         })}
                     </Col>
-                    {this.state.job_id != null && this.state.details!=null && this.state.show != false && <Col>
+                    {this.state.job_id != null && this.state.details!=null && this.state.show != false && 
+                    <Col>
+                    <p>REQ COL</p>
                       <p>{this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}</p>   
-                    </Col>}
+                    </Col>
+                    }
                 </Row>
             </Container>
         )

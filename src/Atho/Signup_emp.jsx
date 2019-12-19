@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -6,19 +6,20 @@ import 'sweetalert2/src/sweetalert2.scss'
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import hire from '../Images/m.png'
+import { Redirect } from 'react-router-dom'
 
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
+  if (!values.firstname) {
+    errors.firstname = 'Required';
+  } else if (values.firstname.length > 15) {
+    errors.firstname = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.lastname) {
+    errors.lastname = 'Required';
+  } else if (values.lastname.length > 20) {
+    errors.lastname = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -39,24 +40,20 @@ const validate = values => {
     }
   }
 
-  if (!values.username) {
-    errors.username = "Required"
-  }
-
   return errors;
 };
 
 const SignupForm = () => {
 
+  const [show, setShow] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       cpassword: '',
-      username: '',
       role:2
     },
     validate,
@@ -100,7 +97,11 @@ const SignupForm = () => {
     },
   });
   return (
+
     <div>
+      {show && <Redirect to={{ pathname: `/login` }} />}
+
+      
        <img style={{ width: '100%', height: '100%'  }}  className="background"
                 src={hire} />
     <MDBContainer className="register" >
@@ -110,42 +111,30 @@ const SignupForm = () => {
           <form onSubmit={formik.handleSubmit}>
             <MDBInput
               label="First name"
-              id="firstName"
-              name="firstName"
+              id="firstname"
+              name="firstname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.firstname}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div>{formik.errors.firstname}</div>
             ) : null}
 
             <MDBInput
               label="Last name"
-              id="lastName"
-              name="lastName"
+              id="lastname"
+              name="lastname"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.lastName}
+              value={formik.values.lastname}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div>{formik.errors.lastname}</div>
             ) : null}
 
-            <MDBInput
-              label="Username"
-              id="username"
-              name="username"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.username}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <div>{formik.errors.username}</div>
-            ) : null}
 
             <MDBInput
               label="Email"

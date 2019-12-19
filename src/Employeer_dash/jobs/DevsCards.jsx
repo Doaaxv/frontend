@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import { localhost } from "../GlobalVars"
+import { localhost } from "../../GlobalVarsars"
 
 export default class DevsCards extends Component {
 
@@ -15,15 +15,13 @@ export default class DevsCards extends Component {
             .catch(err => console.log(err))
     }
 
-    // 5df50d359da60728988bbf0f
     chooseDev = () => {
-        // console.log(`${localhost}/developer/${this.props.userId}`)
-        // axios.put(`${localhost}/job/developer/${this.props.userId}`,{dev_id:this.props.userId})
         axios.put(`${localhost}/job/developer/${this.props.job_id}`, { dev_id: this.props.userId })
             .then(result => {
                 console.log(result)
                 // console.log("RESULT")
-                // this.setState({user:result.data})
+                this.setState({user:result.data})
+                // window.location.reload()
                 //refresh the page HEREEEEEEEEEEEEEEEEEEEE/////////////////////////////////////////////////
             }
             )
@@ -33,8 +31,10 @@ export default class DevsCards extends Component {
     render() {
         return (
             <div>
+                <p>IIII</p>
                 {this.state.user != null &&
                     <div>
+                        {/* add an href so the employer can check the developer page */}
                         <p>{this.state.user.firstname}</p>
                         <p>{this.state.user._id}</p>
                         <p>Link to dev's page</p>

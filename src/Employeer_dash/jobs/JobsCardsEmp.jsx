@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios';
-import {localhost} from "../GlobalVars"
+import {localhost} from "../../GlobalVars"
 
 export default class JobsCardsEmp extends Component {
 
-    
-    
     render() {
         return (
             <div>
