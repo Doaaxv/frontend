@@ -5,7 +5,8 @@ import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import AddJob from "./AddJob"
 import JobsCards from "./"
-import { Form, Row } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
+import DCards from "DCards"
 import reqJCards from "./JobsCardsEmp"
 
 export default class JobNav extends Component {
