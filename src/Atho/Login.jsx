@@ -76,8 +76,10 @@ const LoginForm = () => {
             if (jwt_decode(localStorage.usertoken).user.role == "1") {
               setUsername(jwt_decode(localStorage.usertoken).user.username)
               setShow(!show)
+              window.location.reload()
             } else {
               setEmp(!emp)
+              window.location.reload()
             }
           }
         }).catch(err => console.log(err))

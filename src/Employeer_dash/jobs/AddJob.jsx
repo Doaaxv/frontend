@@ -4,16 +4,24 @@ import {useFormik} from "formik"
 import axios from "axios"
 import jwt_decode from 'jwt-decode'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import { Form, Nav } from "react-bootstrap";
+import { Form, Nav, Row,Col } from "react-bootstrap";
 
 const validate = values => {
   console.log("i'm hereee")
+  //
     const errors = {};
+    //
     if (!values.title) {
-      errors.email = 'Required';
+      errors.title = 'Required';
     }
     if (!values.description) {
-      errors.password = "Required"
+      errors.description = "Required"
+    }
+    if (!values.budget) {
+      errors.budget = "Required"
+    }
+    if (!values.deadline) {
+      errors.deadline = "Required"
     }
     return errors;
   };
@@ -38,7 +46,7 @@ const AddJobForm = () => {
           technologies:[],
           deadline:'',
           requests:[],
-          // emp_id: jwt_decode(localStorage.usertoken).user._id
+          emp_id: jwt_decode(localStorage.usertoken).user._id
         },
         validate,
         onSubmit: async (values) => {
@@ -49,7 +57,7 @@ const AddJobForm = () => {
         },
       });
       return (
-        <div style={{background:"pink"}}>
+        <div >
        <br/>
         <MDBContainer>
           <MDBRow>
@@ -89,17 +97,6 @@ const AddJobForm = () => {
                 {formik.touched.budget && formik.errors.budget ? (
                   <div>{formik.errors.budget}</div>
                 ) : null}
-                <MDBInput
-                  label="technologies"
-                  id="technologies"
-                  name="technologies"
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.technologies} />
-                {formik.touched.technologies && formik.errors.technologies ? (
-                  <div>{formik.errors.technologies}</div>
-                ) : null}
                  <MDBInput
                   label="deadline"
                   id="deadline"
@@ -111,9 +108,23 @@ const AddJobForm = () => {
                 {formik.touched.deadline && formik.errors.deadline ? (
                   <div>{formik.errors.deadline} </div>
                 ): null}
-                <Form.Check label="Ruby" type="checkbox" id="Ruby"  onChange = {checkboxclick}/>
-                <input label="javascript" type="checkbox" id="javascript" onChange = {checkboxclick}/>
-                <input label="python" type="checkbox" id="python" onChange = {checkboxclick}/>
+                <Row>
+                  <Col>
+                  <Form.Check label="Ruby" type="checkbox" id="Ruby"  onChange = {checkboxclick}/>
+                <Form.Check  label="javascript" type="checkbox" id="javascript" onChange = {checkboxclick}/>
+                  </Col>
+                  <Col>
+                  <Form.Check  label="Java" type="checkbox" id="Java" onChange = {checkboxclick}/>
+                <Form.Check  label="C++" type="checkbox" id="C++" onChange = {checkboxclick}/>
+                  </Col>
+                  <Col>
+                  <Form.Check  label="SQL" type="checkbox" id="SQL" onChange = {checkboxclick}/>
+                <Form.Check  label="C#" type="checkbox" id="C#" onChange = {checkboxclick}/>
+                  </Col>
+                </Row>
+                
+                
+                
                 <br/>
                 <MDBBtn type="submit" color="primary">Add</MDBBtn>
               </form>
