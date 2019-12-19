@@ -8,6 +8,7 @@ export default class JobsCardsEmp extends Component {
     
     
     render() {
+        console.log("KKK")
         return (
             <div>
                <p>{this.props.data.title}</p>  

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SignupDev from "./Signup_dev"
 import AddPort from "../portfolio/AddPortfolio"
-import img1 from "../Images/img1.png"
+import imgre from "../Images/imgre.png"
 import './Atho.css'
 import Portfolio from "../portfolio/Portfolio"
 import { Button } from 'react-bootstrap';
@@ -27,7 +27,7 @@ export default class RejesterDev extends Component {
         return (
             <div >
                 <img style={{ width: '100%', height: '100%'  }}  className="background"
-                src={img1} />
+                src={imgre} />
                 {console.log(this.state.userid)}
                {this.state.show == true && <SignupDev toggleSub={this.toggleSub}/>}
                {this.state.show == false && <AddPort username={this.state.username} user_id={this.state.userid}/>} 

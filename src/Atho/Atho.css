@@ -31,15 +31,16 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 .titleEmp{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: 'Playfair Display', serif;
+    
 }
 .textFormik{
     color: yellow;
 }
 .deverlperReg{
     position: absolute;
-    top: 10%;
+    top: 8%;
     color: white;
     left: 10%;
     font-size: 200%;
@@ -61,17 +62,25 @@
 .bot1{
     position: absolute;
     background-color: rgba(255, 255, 255, 0);
-  color: rgba(255, 255, 255, 0.664);
-  border: 2px solid rgba(255, 255, 255, 0.424);
+  color: rgba(3, 1, 1, 0.664);
+  border: 2px solid rgba(0, 0, 0, 0.424);
   padding: 10px 26px;
   left: 3%; 
+}
+.bot1:hover{
+
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+
+
+  
 }
 
 .bot:hover{
     position: absolute;
 
-  color: rgb(255, 255, 255);
-  border: 2px solid rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
 
   left: 40%;
   
