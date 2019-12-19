@@ -20,8 +20,7 @@ export default class JobsList extends Component {
         super(props);
         this.state = {
             userID:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user._id:null),
-            userRole:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user.userrole:null), 
-
+            userRole:(localStorage.usertoken?jwt_decode(localStorage.usertoken).user.role:null), 
             showColContent: null,
             showCol: false,
             currentJob: null,
@@ -203,7 +202,9 @@ export default class JobsList extends Component {
         Axios.put(`${localhost}/job/addreq/${this.state.currentJob._id}`,{requests:this.state.userID})
         .then(result=>{
             alert(result.data)
-            console.log(result)})
+            console.log(result)
+            window.location.reload()
+        })
         .catch(err=>console.log(err))
 
     }
@@ -369,15 +370,21 @@ export default class JobsList extends Component {
                                     {/* {this.state.showColContent} */}
                                     <p>{this.state.currentJob.title}</p>
                                     <p>{this.state.currentJob.requests[0]} JOBS REQ</p>
-
+                                    {console.log(this.state.currentJob.dev_id)}
+                                    {console.log(this.state.userID)}
                                     {this.state.userRole == 1 &&
+                                        this.state.currentJob.dev_id != this.state.userID &&
                                         !this.state.currentJob.requests.includes(this.state.userID) &&
                                         <Button variant="primary" onClick={this.applyForJob}>Apply</Button>}
 
-                                    {this.state.userRole == 1 &&
+                                    { this.state.userRole == 1 &&
                                         this.state.currentJob.requests &&
                                         this.state.currentJob.requests.includes(this.state.userID) &&
                                         <Button variant="primary" disabled >Already applied</Button>}
+
+                                        {this.state.currentJob.dev_id == this.state.userID &&
+                                        <Button variant="primary" disabled >Already applied</Button>
+                                        }
 
                                 </div>
                             </Fade>

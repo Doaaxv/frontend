@@ -4,7 +4,7 @@ import axios from 'axios';
 import {localhost} from "../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import JCards from "./JobsCardsEmp"
-import DCards from "./jobs/DevsCards"
+// import DCards from "./jobs/DevsCards"
 export default class JobsListEmp extends Component {
 
     state = {
@@ -54,7 +54,7 @@ export default class JobsListEmp extends Component {
                     {this.state.job_id != null && this.state.details!=null && this.state.show != false && 
                     <Col>
                     <p>REQ COL</p>
-                      <p>{this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}</p>   
+                      {/* <p>{this.state.details.map(res=> <DCards job_id={this.state.job_id} userId={res} />)}</p>    */}
                     </Col>
                     }
                 </Row>

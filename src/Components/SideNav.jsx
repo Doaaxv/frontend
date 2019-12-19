@@ -75,7 +75,9 @@ class SideNav extends React.Component {
           </a>
           <Link className="link" to="/">Home</Link>
           <Link className="link" to="/Jobs"> Jobs</Link>
-          {(localStorage.usertoken) ? <Link className="link" to="/dashboard"> Dashboard </Link>: null }
+          {this.state.userType == 1  ? <Link className="link" to="/dashboard"> Dashboard </Link>: null }
+          {this.state.userType  == 2 ?  <Link className="link" to="/empDash"> Dashboard </Link>: null}
+        
           {(localStorage.usertoken) ? null : <Link className="link" to="/login">Login</Link>}
           {(localStorage.usertoken) ? null : <Link className="link" to="/Signup-emp">Sign up as employer</Link>}
           {(localStorage.usertoken) ? null : <Link className="link" to="/RegisterDev">sign up as Developer</Link>}
