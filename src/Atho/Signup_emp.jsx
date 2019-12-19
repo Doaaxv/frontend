@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import "./Atho.css"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { register } from './functionAuth'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import hire from '../Images/m.png'
@@ -62,11 +64,36 @@ const SignupForm = () => {
       register(values)
         .then(res => {
           if(res.data.msg=="1"){
-            alert("Email is already in use")
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Email is already in use',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+          
           }else if(res.data.msg=="0"){
-            alert("username is already in use")
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'username is already in use',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+           
           }else if(res.data.msg=="3"){
-            alert("User registered!")
+
+
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Register successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }}
         )
         .catch(err => console.log(err))

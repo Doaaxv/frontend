@@ -1,5 +1,5 @@
 import React ,{ useState } from 'react';
-import img1 from '../Images/img1.png'
+import imgre from "../Images/imgre.png"
 import { useFormik } from 'formik';
 import Typical from 'react-typical'
 import { login } from './functionAuth'
@@ -81,7 +81,7 @@ const LoginForm = () => {
   });
   return (
     <div>
-      <img style={{ width: '100%', height: '150%' }} src={img1} />
+      <img style={{ width: '100%', height: '150%' }} src={imgre} />
 
 
       <Typical className="deverlperReg"
