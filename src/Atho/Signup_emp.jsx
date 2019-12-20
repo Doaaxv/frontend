@@ -70,16 +70,7 @@ const SignupForm = () => {
             })
 
           
-          }else if(res.data.msg=="0"){
-
-            Swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: 'username is already in use',
-              showConfirmButton: false,
-              timer: 1500
-            })
-
+          
            
           }else if(res.data.msg=="3"){
 
@@ -91,6 +82,8 @@ const SignupForm = () => {
               showConfirmButton: false,
               timer: 1500
             })
+
+            setShow(!show)
           }}
         )
         .catch(err => console.log(err))

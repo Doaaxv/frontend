@@ -1,45 +1,48 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import { localhost } from "../../GlobalVarsars"
+import { localhost } from "../../GlobalVars"
+
+import { Col, Row, Container, Button, Card } from "react-bootstrap";
 
 export default class DevsCards extends Component {
 
     state = { user: null }
     componentDidMount = () => {
-        // console.log(this.props.userId)
         axios.get(`${localhost}/user/${this.props.userId}`)
             .then(result => {
-                console.log("RESULT")
+                console.log("RESULTTT")
+                console.log(result)
                 this.setState({ user: result.data })
             })
             .catch(err => console.log(err))
     }
 
     chooseDev = () => {
+        console.log("chose dev")
         axios.put(`${localhost}/job/developer/${this.props.job_id}`, { dev_id: this.props.userId })
             .then(result => {
                 console.log(result)
-                // console.log("RESULT")
                 this.setState({user:result.data})
-                // window.location.reload()
-                //refresh the page HEREEEEEEEEEEEEEEEEEEEE/////////////////////////////////////////////////
+                window.location.reload()
             }
             )
             .catch(err => console.log(err))
     }
 
     render() {
+        console.log("ZZEEEEZZZZEEEEE")
+        console.log(this.state.user)
         return (
             <div>
-                <p>IIII</p>
                 {this.state.user != null &&
-                    <div>
-                        {/* add an href so the employer can check the developer page */}
-                        <p>{this.state.user.firstname}</p>
-                        <p>{this.state.user._id}</p>
-                        <p>Link to dev's page</p>
-                        <button onClick={this.chooseDev}>Choose dev</button>
-                    </div>
+                      <Card>
+                      <Card.Body>
+                        <h2><a href={`/Portfolio/${this.state.user.username}`} ><p>{this.state.user.firstname} {this.state.user.lastname} </p></a></h2>
+                        <Card.Text>
+                        <Button onClick={this.chooseDev}>Choose dev</Button>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card> 
                 }
             </div>
         )

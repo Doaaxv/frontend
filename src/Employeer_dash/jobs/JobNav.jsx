@@ -4,10 +4,10 @@ import axios from "axios"
 import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
 import AddJob from "./AddJob"
-import JobsCards from "./"
-import { Col, Form, Row } from "react-bootstrap";
-import DCards from "DCards"
-import reqJCards from "./JobsCardsEmp"
+import JobsCards from "./JobsCards"
+import { Form, Row,Col } from "react-bootstrap";
+import ReqCard from "./JobsCardsEmp"
+import DCards from './DevsCards'
 
 export default class JobNav extends Component {
 
@@ -32,9 +32,11 @@ export default class JobNav extends Component {
       tab2=true
     }
     else if(e.target.name=="unassigned"){
+      console.log("unassignedunassignedunassigned")
       tab3=true
     }
     else if (e.target.name=='requested'){
+      console.log("requestedreqrererere")
       tab4=true
     }
     this.setState({
@@ -52,18 +54,25 @@ export default class JobNav extends Component {
 
     axios.get(`${localhost}/job//employer/${jwt_decode(localStorage.usertoken).user._id}`)
     .then(items=>{
+
       var requested = []
       var unassigned = []
       var assignedJobs = []
+      console.log("lllll")
       items.data.map(t=>{
+        console.log(t)
+        console.log("REQ LEN: "+t.requests.length)
         if(t.requests.length == 0 && !t.dev_id){
+          console.log("BOO")
           unassigned.push(t)
         }
         if(t.requests.length > 0){
+          console.log("mmmm")
           requested.push(t)
         }
 
         if(t.dev_id){
+          console.log("VVV")
           assignedJobs.push(t)
         }
       })
@@ -79,8 +88,6 @@ export default class JobNav extends Component {
   showDetails = (item,job_id) =>{
     this.setState({details:item,show:true,job_id:job_id})
   }
-
-
 
   render() {
 
@@ -102,11 +109,14 @@ export default class JobNav extends Component {
             >assigned</Nav.Link>
           </Nav.Item>
           <Nav.Item>
+
             <Nav.Link 
             name="unassigned"
             disabled={this.state.tab3}
             onClick={this.showStuff}
-            >unassigned</Nav.Link>
+            >unassigned
+            </Nav.Link>
+
           </Nav.Item>
           <Nav.Item>
             <Nav.Link 
@@ -119,23 +129,28 @@ export default class JobNav extends Component {
 
       {this.state.showT == "create" && 
       <div> <AddJob/> </div> }
-        {this.state.assigned == "assigned" && 
+
+        {this.state.showT == "assigned" && 
       <div>
         {this.state.assignedJobs.map(job=>{
           return <JobsCards data={job} /> })}
         </div>
         }
-        {this.state.unassigned == "unassigned" && 
+
+        {this.state.showT == "unassigned" && 
       <div>
         {this.state.unassigned.map(job=>{
           return <JobsCards data={job} /> })}
         </div>
         }
-      {this.state.requested =="requested" && 
+
+      {this.state.showT =="requested" && 
       <Row>
         <Col md="8">
         {this.state.requested.map(job=>{
-          return <reqJCards data={job} showDetails={this.showDetails}/>
+          console.log("RRRR------------------")
+          console.log(job.requests)
+          return <ReqCard data={job} showDetails={this.showDetails}/>
         })}
         </Col>
         { this.state.details!=null && this.state.show &&

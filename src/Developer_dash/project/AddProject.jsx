@@ -5,6 +5,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 
+import { fileUploadHandler, getImagesUrl } from "../../ImageUpload/UploadImage"
+
 import Axios from 'axios';
 import {localhost} from "../../GlobalVars"
 import jwt_decode from 'jwt-decode'
@@ -20,6 +22,17 @@ const validate = values => {
     return errors;
   };
 const AddProjectForm = () => {
+
+  const buttonClick = (event) => {
+    if (event.target.files[0]) {
+      const image = event.target.files[0];
+      formik.values.image = image
+    }
+  }
+  const uploadTheImage = () => {
+    fileUploadHandler(formik.values.image)
+  }
+
     const formik = useFormik({
         initialValues: {
           title: '',
@@ -31,6 +44,10 @@ const AddProjectForm = () => {
         },
         validate,
         onSubmit: async (values) => {
+          getImagesUrl(values.image.name)
+      .then(url=>{
+        values.image = url
+
           Axios.post(`${localhost}/project/create`,values)
           .then(result=>{
 
@@ -44,6 +61,7 @@ const AddProjectForm = () => {
             
             console.log(result)})
           .catch(err=>console.log(err))
+      })
         },
       });
       return (
@@ -76,18 +94,8 @@ const AddProjectForm = () => {
                   <div>{formik.errors.description} </div>
                 ): null}
                 
-                <MDBInput
-                  label="Image"
-                  id="image"
-                  name="image"
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.image}
-                />
-                {formik.touched.image && formik.errors.image ? (
-                  <div>{formik.errors.image}</div>
-                ) : null}
+               
+                
                 <MDBInput 
                   label="Github"
                   id="github"
@@ -100,6 +108,14 @@ const AddProjectForm = () => {
                 {formik.touched.github && formik.errors.github ? (
                   <div>{formik.errors.github}</div>
                 ) : null}
+
+<input type="file" name="files" id="" onChange={buttonClick} />
+{formik.touched.image && formik.errors.image ? (
+                  <div>{formik.errors.image}</div>
+                ) : null}
+            <br />
+            <MDBBtn  id="btn-primary" onClick={uploadTheImage}>Upload image </MDBBtn >
+
                 <MDBBtn  id="btn-primary" type="submit" color="primary">Add</MDBBtn>
               </form>
             </MDBCol>
