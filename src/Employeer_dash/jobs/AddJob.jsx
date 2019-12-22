@@ -3,6 +3,8 @@ import {localhost} from "../../GlobalVars"
 import {useFormik} from "formik"
 import axios from "axios"
 import jwt_decode from 'jwt-decode'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import { Form, Nav, Row,Col } from "react-bootstrap";
 
@@ -52,7 +54,18 @@ const AddJobForm = () => {
         onSubmit: async (values) => {
           axios.post(`${localhost}/job/create`,values)
           .then(result=>{console.log("create job")
-            console.log(result)})
+            console.log(result)
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Add Job successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            window.location.reload()
+          
+          }
+            )
           .catch(err=>console.log(err))
         },
       });
@@ -126,7 +139,7 @@ const AddJobForm = () => {
                 
                 
                 <br/>
-                <MDBBtn type="submit" color="primary">Add</MDBBtn>
+                <MDBBtn  id="btn-primary" type="submit" color="primary">Add</MDBBtn>
               </form>
             </MDBCol>
           </MDBRow>

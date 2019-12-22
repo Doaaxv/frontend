@@ -14,7 +14,7 @@ export default class DashDevNavBar extends Component {
               <Nav.Link href="/dashboard/editprofile">Edit profile</Nav.Link>
               <Nav.Link href="/dashboard/Dev-Projects">Projects</Nav.Link>
               <Nav.Link href="/dashboard/Dev-Jobs">Jobs</Nav.Link>
-              <Nav.Link>Chat</Nav.Link>
+              <Nav.Link></Nav.Link>
               <Nav.Link href={"/Portfolio/"+jwt_decode(localStorage.usertoken).user.username} >Portfolio</Nav.Link>
              </Nav>
           </Navbar.Collapse>

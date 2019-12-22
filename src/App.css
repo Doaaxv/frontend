@@ -194,11 +194,10 @@
   grid-template-columns: 1fr 1fr ;
   grid-gap: 5%;
 }
-.prot{
-  position: relative; 
-}
+
 .proth{
   position: absolute; 
+  object-fit: cover;
 }
 .section {
   text-align: center;
@@ -382,9 +381,7 @@ text-orientation: mixed;
 
 .prtimgUser{
  
-  height: 825px;
-  width: 1800px;
- 
+  object-fit: cover;
 }
 
 @media only screen and (min-width: 960px) {

@@ -89,7 +89,7 @@ export const Landingpage = () => {
                  <img className="map"src={Map} alt="boy" /> 
            <div className="num"><Spring 
                   from={{ number: 0 }}
-                  to={{ number: 643000000 }}>
+                  to={{ number: 3000000 }}>
                  {props => <div>{props.number}</div>}
  
                  </Spring>

@@ -8,9 +8,6 @@ export default class DevsCards extends Component {
 
     state = { user: null }
     componentDidMount = () => {
-        // console.log(this.props.userId)
-        console.log("DID MOUT USERS ")
-        console.log(this.props.userId)
         axios.get(`${localhost}/user/${this.props.userId}`)
             .then(result => {
                 console.log("RESULTTT")
@@ -40,9 +37,9 @@ export default class DevsCards extends Component {
                 {this.state.user != null &&
                       <Card>
                       <Card.Body>
-                        <h1><a href={`/Portfolio/${this.state.user.username}`} ><p>{this.state.user.firstname}</p></a></h1>
+                        <h2><a href={`/Portfolio/${this.state.user.username}`} ><p>{this.state.user.firstname} {this.state.user.lastname} </p></a></h2>
                         <Card.Text>
-                        <button onClick={this.chooseDev}>Choose dev</button>
+                        <Button onClick={this.chooseDev}>Choose dev</Button>
                         </Card.Text>
                       </Card.Body>
                     </Card> 
