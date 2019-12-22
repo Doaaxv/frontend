@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
-import axios from 'axios';
-import {localhost} from "../GlobalVars"
+import React, { Component } from "react";
 
 export default class JobsCardsEmp extends Component {
-
-    
-    
-    render() {
-        console.log("KKK")
-        return (
-            <div>
-               <p>{this.props.data.title}</p>  
-               <button onClick={()=>this.props.showDetails(this.props.data.requests,this.props.data._id)}>show details</button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <p>{this.props.data.title}</p>
+        <button
+          onClick={() =>
+            this.props.showDetails(
+              this.props.data.requests,
+              this.props.data._id
+            )
+          }
+        >
+          show details
+        </button>
+      </div>
+    );
+  }
 }

@@ -5,8 +5,7 @@ import Typical from 'react-typical'
 import "./Atho.css"
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-
+import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 
 const validate = values => {
   const errors = {};
@@ -15,19 +14,16 @@ const validate = values => {
   } else if (values.firstname.length > 15) {
     errors.firstname = 'Must be 15 characters or less';
   }
-
   if (!values.lastname) {
     errors.lastname = 'Required';
   } else if (values.lastname.length > 20) {
     errors.lastname = 'Must be 20 characters or less';
   }
-
   if (!values.email) {
     errors.email = 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
-
   if (!values.password) {
     errors.password = "Required"
   }
@@ -39,16 +35,11 @@ const validate = values => {
       errors.cpassword = "password doesn't match"
     }
   }
-
   if (!values.username) {
     errors.username = "Required"
   }
-
   return errors;
 };
-
-
-
 const SignupForm = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -61,18 +52,11 @@ const SignupForm = (props) => {
       role:1
     },
     validate,
-
-   
     onSubmit: async (values) => {
-     
       register(values)
         .then(r => {
-          console.log(r)
           //1 means email is in use
-          console.log(r.data)
           if(r.data.msg=="1"){
-            console.log("1")
-
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -82,8 +66,6 @@ const SignupForm = (props) => {
             })
 
           }else if(r.data.msg=="0"){
-            console.log("0")
-            
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -93,8 +75,6 @@ const SignupForm = (props) => {
             })
 
           }else if(r.data.msg=="3"){
-            console.log("3")
-
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -102,11 +82,8 @@ const SignupForm = (props) => {
               showConfirmButton: false,
               timer: 1500
             })
-
-            console.log(r.data.user)
             props.toggleSub(r.data.userid,r.data.username)
             //redirect to the add portfolio and send the user id with it
-            
           }
         }
         )
@@ -116,7 +93,6 @@ const SignupForm = (props) => {
   });
   return (
     <div>
-
 <Typical className="deverlperReg"
         steps={['Developer', 1500, 'Developer registering ....', 50000]}
         loop={Infinity}
@@ -203,8 +179,6 @@ const SignupForm = (props) => {
             {formik.touched.cpassword && formik.errors.cpassword ? (
               <div>{formik.errors.cpassword}</div>
             ) : null}
-
-
             <button type="submit" className="bot">Register</button >
           </form>
         </MDBCol>

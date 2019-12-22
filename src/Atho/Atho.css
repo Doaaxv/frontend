@@ -11,17 +11,9 @@
     top: 15%;
     left: 30%;
 }
-/* body {
-    background-image: url("../Images/img1.png");
-    background-repeat: no-repeat;
-  background-size: cover;
-  background-size: 120%;
-   width: 80px;
-} */
 @import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
 .logo{
     font-family: 'Warnes', cursive;
-  /* font-family: 'Mr Bedfort', cursive; */
   color: white;
   font-size: 200%;
   font-weight: lighter;

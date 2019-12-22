@@ -15,7 +15,6 @@ export default class Developer_dash extends Component {
     return (
       <div>
         <DashDevNavBar/>
-        
         <Router>
         <Route path="/dashboard/editprofile" component = {EditProfile} />
         <Route path="/dashboard/Dev-Projects" component = {projectNav}/> 

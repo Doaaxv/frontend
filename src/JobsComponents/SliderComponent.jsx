@@ -11,7 +11,6 @@ const railOuterStyle = {
   transform: "translate(0%, -50%)",
   borderRadius: 7,
   cursor: "pointer"
-  // border: '1px solid white',
 };
 
 const railInnerStyle = {

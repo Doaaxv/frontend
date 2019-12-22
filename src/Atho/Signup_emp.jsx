@@ -4,7 +4,7 @@ import "./Atho.css"
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { register } from './functionAuth'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 import hire from '../Images/m.png'
 import { Redirect } from 'react-router-dom'
 
@@ -15,23 +15,19 @@ const validate = values => {
   } else if (values.firstname.length > 15) {
     errors.firstname = 'Must be 15 characters or less';
   }
-
   if (!values.lastname) {
     errors.lastname = 'Required';
   } else if (values.lastname.length > 20) {
     errors.lastname = 'Must be 20 characters or less';
   }
-
   if (!values.email) {
     errors.email = 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
-
   if (!values.password) {
     errors.password = "Required"
   }
-
   if (!values.cpassword) {
     errors.cpassword = "Required"
   } else {
@@ -39,14 +35,10 @@ const validate = values => {
       errors.cpassword = "password doesn't match"
     }
   }
-
   return errors;
 };
-
 const SignupForm = () => {
-
   const [show, setShow] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -68,13 +60,7 @@ const SignupForm = () => {
               showConfirmButton: false,
               timer: 1500
             })
-
-          
-          
-           
           }else if(res.data.msg=="3"){
-
-
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -82,7 +68,6 @@ const SignupForm = () => {
               showConfirmButton: false,
               timer: 1500
             })
-
             setShow(!show)
           }}
         )
@@ -93,8 +78,6 @@ const SignupForm = () => {
 
     <div>
       {show && <Redirect to={{ pathname: `/login` }} />}
-
-      
        <img style={{ width: '100%', height: '100%'  }}  className="background"
                 src={hire} />
     <MDBContainer className="register" >
@@ -127,8 +110,6 @@ const SignupForm = () => {
             {formik.touched.lastname && formik.errors.lastname ? (
               <div>{formik.errors.lastname}</div>
             ) : null}
-
-
             <MDBInput
               label="Email"
               id="email"
@@ -166,8 +147,6 @@ const SignupForm = () => {
             {formik.touched.cpassword && formik.errors.cpassword ? (
               <div>{formik.errors.cpassword}</div>
             ) : null}
-
-
 <button type="submit" className="bot"  >Register</button >
           
           </form>

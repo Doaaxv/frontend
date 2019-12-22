@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Col, Row, Container, Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 export default class JobsCards extends Component {
   render() {
     return (
