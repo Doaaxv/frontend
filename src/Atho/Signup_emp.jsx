@@ -52,7 +52,7 @@ const SignupForm = () => {
     onSubmit: async (values) => {
       register(values)
         .then(res => {
-          if(res.data.msg=="1"){
+          if(res.data.msg==="1"){
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -60,7 +60,7 @@ const SignupForm = () => {
               showConfirmButton: false,
               timer: 1500
             })
-          }else if(res.data.msg=="3"){
+          }else if(res.data.msg==="3"){
             Swal.fire({
               position: 'top-end',
               icon: 'success',

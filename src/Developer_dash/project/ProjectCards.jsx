@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Nav } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import axios from "axios";
@@ -13,7 +13,7 @@ export default class ProjectCards extends Component {
   deleteProject = project => {
     axios
       .delete(`${localhost}/project/${this.props.data._id}`)
-      .then(result => {
+      .then(() => {
         Swal.fire({
           position: "top-end",
           icon: "success",

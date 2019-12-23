@@ -56,7 +56,7 @@ const SignupForm = (props) => {
       register(values)
         .then(r => {
           //1 means email is in use
-          if(r.data.msg=="1"){
+          if(r.data.msg==="1"){
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -65,7 +65,7 @@ const SignupForm = (props) => {
               timer: 1500
             })
 
-          }else if(r.data.msg=="0"){
+          }else if(r.data.msg==="0"){
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -74,7 +74,7 @@ const SignupForm = (props) => {
               timer: 1500
             })
 
-          }else if(r.data.msg=="3"){
+          }else if(r.data.msg==="3"){
             Swal.fire({
               position: 'top-end',
               icon: 'success',

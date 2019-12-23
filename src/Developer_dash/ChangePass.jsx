@@ -52,7 +52,7 @@ const ChangepassForm = () => {
           }
         )
         .then(res => {
-          if ("1" == res.data) {
+          if ("1" === res.data) {
             Swal.fire({
               position: "top-end",
               icon: "error",

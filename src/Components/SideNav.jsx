@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -71,13 +71,13 @@ class SideNav extends React.Component {
             {" "}
             Jobs
           </Link>
-          {this.state.userType == 1 ? (
+          {this.state.userType === 1 ? (
             <Link className="link" to="/dashboard">
               {" "}
               Dashboard{" "}
             </Link>
           ) : null}
-          {this.state.userType == 2 ? (
+          {this.state.userType === 2 ? (
             <Link className="link" to="/empDash">
               {" "}
               Dashboard{" "}

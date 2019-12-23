@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Portfolio(props) {
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo] = useState([]);
   const [userInfoExra, setUserInfoExra] = useState([]);
   const [userProjects, setUserProjects] = useState([]);
 

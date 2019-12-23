@@ -17,10 +17,10 @@ export default class JobNav extends Component {
     var tab1 = false;
     var tab2 = false;
 
-    if (e.target.name == "Prequests") {
+    if (e.target.name === "Prequests") {
       tab1 = true;
     }
-    if (e.target.name == "Assigned") {
+    if (e.target.name === "Assigned") {
       tab2 = true;
     }
     this.setState({
@@ -43,7 +43,7 @@ export default class JobNav extends Component {
             temp.push(t);
           }
 
-          if (t.dev_id == jwt_decode(localStorage.usertoken).user._id) {
+          if (t.dev_id === jwt_decode(localStorage.usertoken).user._id) {
             assignedJobs.push(t);
           }
         });
@@ -76,14 +76,14 @@ export default class JobNav extends Component {
           </Nav.Item>
         </Nav>
 
-        {this.state.showT == "Prequests" && (
+        {this.state.showT === "Prequests" && (
           <div>
             {this.state.jobs.map(job => {
               return <JobsCards data={job} />;
             })}
           </div>
         )}
-        {this.state.showT == "Assigned" && (
+        {this.state.showT === "Assigned" && (
           <div>
             {this.state.assignedJobs.map(job => {
               return <JobsCards data={job} />;

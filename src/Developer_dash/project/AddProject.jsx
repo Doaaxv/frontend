@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./project.css";
 import { useFormik } from "formik";
 import Swal from "sweetalert2/dist/sweetalert2.js";

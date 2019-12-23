@@ -3,7 +3,7 @@ import imgre from "../Images/imgre.png"
 import { useFormik } from 'formik';
 import Typical from 'react-typical'
 import { login } from './functionAuth'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { Redirect } from 'react-router-dom'
@@ -41,7 +41,7 @@ const LoginForm = () => {
       login(values)
         .then(res => {
 
-          if (res.data == "1") {
+          if (res.data === "1") {
 
             Swal.fire({
               position: 'top-end',
@@ -52,7 +52,7 @@ const LoginForm = () => {
             })
 
 
-          } else if (res.data == "2") {
+          } else if (res.data === "2") {
 
             Swal.fire({
               position: 'top-end',
@@ -73,7 +73,7 @@ const LoginForm = () => {
               timer: 1500
             })
 
-            if (jwt_decode(localStorage.usertoken).user.role == "1") {
+            if (jwt_decode(localStorage.usertoken).user.role === "1") {
               setUsername(jwt_decode(localStorage.usertoken).user.username)
               setShow(!show)
               window.location.reload()
@@ -87,7 +87,7 @@ const LoginForm = () => {
   });
   return (
     <div>
-      <img style={{ width: '100%', height: '150%' }} src={imgre} />
+      <img style={{ width: '100%', height: '150%' }} src={imgre} alt = "" />
 
 
       <Typical className="deverlperReg"

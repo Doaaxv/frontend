@@ -6,7 +6,7 @@ import JobNav from "./jobs/JobNav"
 
 import EditProfile from "./Editprofile"
 import Projects from "./project/ProjectsPage"
-import addjobs from "./jobs/Addjobs"
+
 import AddProject from "./project/AddProject"
 import EditProject from "./project/EditProject"
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Parallax } from "react-parallax";
 import { Spring } from "react-spring/renderprops";
 import Map from "../Images/homepage-banner-static-map.svg";
@@ -23,14 +23,6 @@ import portfolio from "../Images/portfolio.png";
 import { Card } from "react-bootstrap";
 
 const styles = { fontFamily: "sans-serif", textAlign: "center" };
-const insideStyles = {
-  background: "white",
-  padding: 20,
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%,-50%)"
-};
 const brandStyles = {
   fontFamily: "sans-serif",
   color: "white",
@@ -117,7 +109,7 @@ export const Landingpage = () => {
             </Card>
 
             <Card style={{ width: "18rem", height: "21rem" }}>
-              <Card.Img variant="top" className="imgLandpage" src={free} />
+              <Card.Img variant="top" className="imgLandpage" src={free} alt = " " />
               <Card.Body>
                 <Card.Title className="fontstyle">
                   Choose freelancers

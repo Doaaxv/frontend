@@ -10,7 +10,6 @@ import Login from "./Atho/Login";
 import SignupEmp from "./Atho/Signup_emp";
 import SignupDev from "./Atho/Signup_dev";
 import changepassword from "./Developer_dash/ChangePass";
-import Job from "./Employeer_dash/jobs/JobNav";
 import Logo from "./Components/logo";
 import EmpDash from "./Employeer_dash/Employer_dash";
 import axios from "axios";
@@ -38,30 +37,17 @@ export default class App extends Component {
         <SideNav />
         <Logo />
         <Route exact path="/" exact component={Landingpage} />
-        <Route exact path="/Portfolio/:username" exact component={Portfolio} />
-        {localStorage.usertoken ? null : (
-          <Route exact path="/login" exact component={Login} />
-        )}
-        {localStorage.usertoken ? null : (
-          <Route exact path="/Signup-dev" exact component={SignupDev} />
-        )}
-        {localStorage.usertoken ? null : (
-          <Route exact path="/Signup-emp" exact component={SignupEmp} />
-        )}
         <Route path="/jobs" component={Jobs} />
-        {localStorage.usertoken ? (
-          <Route path="/changepassword" component={changepassword} />
-        ) : null}
-        <Route path="/job" component={Job} />
-        {localStorage.usertoken ? (
-          <Route path="/dashboard" component={DevDash} />
-        ) : null}
-        <Route path="/jobslist" component={JobListEmp} />
-        {localStorage.usertoken ? null : (
-          <Route path="/RegisterDev" component={Register} />
-        )}
-        <Route path="/EmpDash" component={EmpDash} />
-        <Route path="/jobnav" component={JobNav} />
+        {localStorage.usertoken ? (<Route exact path="/Portfolio/:username" exact component={Portfolio}/>):null}
+        {localStorage.usertoken ? null : ( <Route exact path="/login" exact component={Login} /> )}
+        {localStorage.usertoken ? null : ( <Route exact path="/Signup-dev" exact component={SignupDev} /> )}
+        {localStorage.usertoken ? null : ( <Route exact path="/Signup-emp" exact component={SignupEmp} /> )}
+        {localStorage.usertoken ? ( <Route path="/changepassword" component={changepassword} /> ) : null}
+        {localStorage.usertoken ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
+        {localStorage.usertoken ? null : ( <Route path="/RegisterDev" component={Register} /> )}
+        {localStorage.userType === 2 ? ( <Route path="/EmpDash" component={EmpDash} />): null}}
+        {localStorage.userType === 2 ? ( <Route path="/jobslist" component={JobListEmp} />): null}}
+        {localStorage.userType === 2 ? ( <Route path="/jobnav" component={JobNav} />): null}}
       </Router>
     );
   }

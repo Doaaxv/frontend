@@ -7,7 +7,7 @@ export default class DashDevNavBar extends Component {
     render() {
         return (
             <div>
-          <Navbar bg="dark" variant="dark" expand="lg" expand="lg">
+          <Navbar bg="dark" variant="dark"  expand="lg">
           <Navbar.Brand href="///" >React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav"> <Nav className="mr-auto">

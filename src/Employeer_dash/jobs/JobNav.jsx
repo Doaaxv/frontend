@@ -24,13 +24,13 @@ export default class JobNav extends Component {
     var tab2 = false;
     var tab3 = false;
     var tab4 = false;
-    if (e.target.name == "create") {
+    if (e.target.name === "create") {
       tab1 = true;
-    } else if (e.target.name == "assigned") {
+    } else if (e.target.name === "assigned") {
       tab2 = true;
-    } else if (e.target.name == "unassigned") {
+    } else if (e.target.name === "unassigned") {
       tab3 = true;
-    } else if (e.target.name == "requested") {
+    } else if (e.target.name === "requested") {
       tab4 = true;
     }
     this.setState({
@@ -57,7 +57,7 @@ export default class JobNav extends Component {
         var assignedJobs = [];
 
         items.data.map(t => {
-          if (t.requests.length == 0 && !t.dev_id) {
+          if (t.requests.length === 0 && !t.dev_id) {
             unassigned.push(t);
           }
           if (t.requests.length > 0) {
@@ -123,14 +123,14 @@ export default class JobNav extends Component {
           </Nav.Item>
         </Nav>
 
-        {this.state.showT == "create" && (
+        {this.state.showT === "create" && (
           <div>
             {" "}
             <AddJob />{" "}
           </div>
         )}
 
-        {this.state.showT == "assigned" && (
+        {this.state.showT === "assigned" && (
           <div>
             {this.state.assignedJobs.map(job => {
               return <JobsCards data={job} />;
@@ -138,7 +138,7 @@ export default class JobNav extends Component {
           </div>
         )}
 
-        {this.state.showT == "unassigned" && (
+        {this.state.showT === "unassigned" && (
           <div>
             {this.state.unassigned.map(job => {
               return <JobsCards data={job} />;
@@ -146,7 +146,7 @@ export default class JobNav extends Component {
           </div>
         )}
 
-        {this.state.showT == "requested" && (
+        {this.state.showT === "requested" && (
           <Row>
             <Col md="8">
               {this.state.requested.map(job => {

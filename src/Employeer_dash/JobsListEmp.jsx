@@ -43,7 +43,7 @@ export default class JobsListEmp extends Component {
           <Col>
             {this.state.jobs != null &&
               this.state.jobs.map(item => {
-                if (item.status == "unassigned") {
+                if (item.status === "unassigned") {
                   return <JCards data={item} showDetails={this.showDetails} />;
                 }
               })}

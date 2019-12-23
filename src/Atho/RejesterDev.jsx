@@ -18,9 +18,9 @@ export default class RejesterDev extends Component {
         return (
             <div >
                 <img style={{ width: '100%', height: '100%'  }}  className="background"
-                src={imgre} />
-               {this.state.show == true && <SignupDev toggleSub={this.toggleSub}/>}
-               {this.state.show == false && <AddPort username={this.state.username} user_id={this.state.userid}/>} 
+                src={imgre}  alt = "" />
+               {this.state.show === true && <SignupDev toggleSub={this.toggleSub}/>}
+               {this.state.show === false && <AddPort username={this.state.username} user_id={this.state.userid}/>} 
             </div>
         )
     }

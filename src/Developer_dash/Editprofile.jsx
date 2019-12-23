@@ -41,7 +41,7 @@ const EditForm = () => {
       axios
         .put(`${localhost}/user/changedetails/${formik.values.user._id}`, uUser)
         .then(res => {
-          if (res.data.msg == "2") {
+          if (res.data.msg === "2") {
             alert("Successfully Updated");
             axios
               .post(`${localhost}/user/edit/token`, res.data.user)
