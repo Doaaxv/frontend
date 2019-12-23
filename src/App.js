@@ -43,7 +43,7 @@ export default class App extends Component {
         {localStorage.usertoken ? null : ( <Route exact path="/Signup-dev" exact component={SignupDev} /> )}
         {localStorage.usertoken ? null : ( <Route exact path="/Signup-emp" exact component={SignupEmp} /> )}
         {localStorage.usertoken ? ( <Route path="/changepassword" component={changepassword} /> ) : null}
-        {localStorage.usertoken ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
+        {localStorage.userType === 1 ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
         {localStorage.usertoken ? null : ( <Route path="/RegisterDev" component={Register} /> )}
         {localStorage.userType === 2 ? ( <Route path="/EmpDash" component={EmpDash} />): null}}
         {localStorage.userType === 2 ? ( <Route path="/jobslist" component={JobListEmp} />): null}}
