@@ -17,6 +17,7 @@ import Register from "./Atho/RejesterDev";
 import JobListEmp from "./Employeer_dash/JobsListEmp";
 import JobNav from "./Employeer_dash/jobs/JobNav";
 import dotenv from "dotenv";
+import {localhost} from "./GlobalVars"
 dotenv.config();
 
 export default class App extends Component {
@@ -27,7 +28,7 @@ export default class App extends Component {
     };
   }
   componentDidMount() {
-    axios.get("http://localhost:5000/project").then(res => {
+    axios.get(`${localhost}/project`).then(res => {
       this.setState({ data: res.data });
     });
   }
