@@ -6,7 +6,7 @@ export default class EemDashNav extends Component {
     return (
       <div>
         <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand href="///"> </Navbar.Brand>
+          <Navbar.Brand href="/"> </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav className="mr-auto">
             <Nav.Link href="/EmpDash/editprofile">r</Nav.Link>

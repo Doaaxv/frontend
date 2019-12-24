@@ -51,17 +51,17 @@ class SideNav extends React.Component {
 
     return (
       <React.Fragment>
-        <span onClick={this.openNavClick} class="open-nav">
+        <span onClick={this.openNavClick} className="open-nav">
           {" "}
           &#9776; Menu{" "}
         </span>
         <div
           onClick={this.navCoverClick}
-          class="nav-cover"
+          className="nav-cover"
           style={navCoverStyle}
         />
-        <div name="side-nav" class="side-nav" style={sideNavStyle}>
-          <a href="#" onClick={this.closeNavClick} class="close-nav">
+        <div name="side-nav" className="side-nav" style={sideNavStyle}>
+          <a href="#" onClick={this.closeNavClick} className="close-nav">
             &times;
           </a>
           <Link className="link" to="/">
