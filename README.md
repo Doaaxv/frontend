@@ -29,7 +29,7 @@ react-bootstrap
 
 ## Wireframe
 
-![wireframe](./wireframe.png)
+![wireframe](./wireframei.png)
 
 ## User Stories
 
