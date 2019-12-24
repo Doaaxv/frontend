@@ -12,26 +12,26 @@ import SignupDev from "./Atho/Signup_dev";
 import changepassword from "./Developer_dash/ChangePass";
 import Logo from "./Components/logo";
 import EmpDash from "./Employeer_dash/Employer_dash";
-import axios from "axios";
 import Register from "./Atho/RejesterDev";
 import JobListEmp from "./Employeer_dash/JobsListEmp";
 import JobNav from "./Employeer_dash/jobs/JobNav";
 import dotenv from "dotenv";
-import {localhost} from "./GlobalVars"
+import jwt_decode from "jwt-decode";
 dotenv.config();
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
+  
+  state = { };
+
   componentDidMount() {
-    axios.get(`${localhost}/project`).then(res => {
-      this.setState({ data: res.data });
-    });
+    const token = localStorage.usertoken;
+
+    if (token) {
+      const decoded = jwt_decode(token);
+      this.setState({ userType: decoded.user.role });
+    }
   }
+ 
   render() {
     return (
       <Router>
@@ -44,11 +44,11 @@ export default class App extends Component {
         {localStorage.usertoken ? null : ( <Route exact path="/Signup-dev" exact component={SignupDev} /> )}
         {localStorage.usertoken ? null : ( <Route exact path="/Signup-emp" exact component={SignupEmp} /> )}
         {localStorage.usertoken ? ( <Route path="/changepassword" component={changepassword} /> ) : null}
-        {localStorage.userType === 1 ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
+        {this.state.userType  === 1 ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
         {localStorage.usertoken ? null : ( <Route path="/RegisterDev" component={Register} /> )}
-        {localStorage.userType === 2 ? ( <Route path="/EmpDash" component={EmpDash} />): null}}
-        {localStorage.userType === 2 ? ( <Route path="/jobslist" component={JobListEmp} />): null}}
-        {localStorage.userType === 2 ? ( <Route path="/jobnav" component={JobNav} />): null}}
+        {this.state.userType  === 2 ? ( <Route path="/EmpDash" component={EmpDash} />): null}}
+        {this.state.userType  === 2 ? ( <Route path="/jobslist" component={JobListEmp} />): null}}
+        {this.state.userType  === 2 ? ( <Route path="/jobnav" component={JobNav} />): null}}
       </Router>
     );
   }

@@ -46,6 +46,7 @@ export default class JobNav extends Component {
           if (t.dev_id === jwt_decode(localStorage.usertoken).user._id) {
             assignedJobs.push(t);
           }
+          return t
         });
         this.setState({ jobs: temp, assignedJobs: assignedJobs });
       })
