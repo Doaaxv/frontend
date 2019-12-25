@@ -39,16 +39,16 @@ export default class App extends Component {
         <Logo />
         <Route exact path="/" exact component={Landingpage} />
         <Route path="/jobs" component={Jobs} />
-        {localStorage.usertoken ? (<Route exact path="/Portfolio/:username" exact component={Portfolio}/>):null}
-        {localStorage.usertoken ? null : ( <Route exact path="/login" exact component={Login} /> )}
-        {localStorage.usertoken ? null : ( <Route exact path="/Signup-dev" exact component={SignupDev} /> )}
-        {localStorage.usertoken ? null : ( <Route exact path="/Signup-emp" exact component={SignupEmp} /> )}
-        {localStorage.usertoken ? ( <Route path="/changepassword" component={changepassword} /> ) : null}
-        {this.state.userType  === 1 ? ( <Route path="/dashboard" component={DevDash} /> ) : null}
-        {localStorage.usertoken ? null : ( <Route path="/RegisterDev" component={Register} /> )}
-        {this.state.userType  === 2 ? ( <Route path="/EmpDash" component={EmpDash} />): null}}
-        {this.state.userType  === 2 ? ( <Route path="/jobslist" component={JobListEmp} />): null}}
-        {this.state.userType  === 2 ? ( <Route path="/jobnav" component={JobNav} />): null}}
+        {localStorage.usertoken ? <Route exact path="/Portfolio/:username" exact component={Portfolio}/>:null}
+        {localStorage.usertoken ? null :  <Route exact path="/login" exact component={Login} /> }
+        {localStorage.usertoken ? null :  <Route exact path="/Signup-dev" exact component={SignupDev} /> }
+        {localStorage.usertoken ? null :  <Route exact path="/Signup-emp" exact component={SignupEmp} /> }
+        {localStorage.usertoken ? <Route path="/changepassword" component={changepassword} /> : null}
+        {this.state.userType  === 1 ?  <Route path="/dashboard" component={DevDash} /> : null}
+        {localStorage.usertoken ? null :  <Route path="/RegisterDev" component={Register} /> }
+        {this.state.userType  === 2 ?  <Route path="/EmpDash" component={EmpDash} />: null}
+        {this.state.userType  === 2 ?  <Route path="/jobslist" component={JobListEmp} />: null}
+        {this.state.userType  === 2 ?  <Route path="/jobnav" component={JobNav} />: null}
       </Router>
     );
   }
