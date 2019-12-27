@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Landingpage from "./Components/Landingpage";
 import SideNav from "./Components/SideNav";
 import Portfolio from "./portfolio/Portfolio";
@@ -37,6 +37,7 @@ export default class App extends Component {
       <Router>
         <SideNav />
         <Logo />
+        <Switch>
         <Route exact path="/" exact component={Landingpage} />
         <Route path="/jobs" component={Jobs} />
         {localStorage.usertoken ? <Route exact path="/Portfolio/:username" exact component={Portfolio}/>:null}
@@ -49,6 +50,7 @@ export default class App extends Component {
         {this.state.userType  === 2 ?  <Route path="/EmpDash" component={EmpDash} />: null}
         {this.state.userType  === 2 ?  <Route path="/jobslist" component={JobListEmp} />: null}
         {this.state.userType  === 2 ?  <Route path="/jobnav" component={JobNav} />: null}
+        </Switch>
       </Router>
     );
   }
