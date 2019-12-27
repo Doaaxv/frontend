@@ -11,8 +11,7 @@ export default class ProjectCards extends Component {
     show: false
   };
   deleteProject = project => {
-    axios
-      .delete(`${localhost}/project/${this.props.data._id}`)
+    axios.delete(`${localhost}/project/${this.props.data._id}`)
       .then(() => {
         Swal.fire({
           position: "top-end",

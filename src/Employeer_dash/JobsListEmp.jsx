@@ -17,12 +17,7 @@ export default class JobsListEmp extends Component {
 
   componentDidMount = () => {
     if (localStorage.usertoken) {
-      axios
-        .get(
-          `${localhost}/job/employer/${
-            jwt_decode(localStorage.usertoken).user._id
-          }`
-        )
+      axios.get(`${localhost}/job/employer/${jwt_decode(localStorage.usertoken).user._id}`)
         .then(r => {
           this.setState({ jobs: r.data });
         })

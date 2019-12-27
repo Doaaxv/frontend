@@ -25,8 +25,7 @@ const EditProjectForm = props => {
     },
     validate,
     onSubmit: async values => {
-      axios
-        .put(`${localhost}/project/${props.location.state.data._id}`, values)
+      axios.put(`${localhost}/project/${props.location.state.data._id}`, values)
         .then()
         .catch(err => console.log(err));
     }

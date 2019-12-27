@@ -14,8 +14,7 @@ export default class JobRequests extends Component {
   };
 
   componentDidMount = () => {
-    axios
-      .get(`${localhost}/job/developer/${this.state.userId}`)
+    axios.get(`${localhost}/job/developer/${this.state.userId}`)
       .then(r => {
         this.setState({ jobs: r.data });
       })

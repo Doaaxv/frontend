@@ -6,8 +6,7 @@ export default class GetUsernamePage extends Component {
   state = { username: "" };
 
   componentDidMount = () => {
-    axios
-      .get(`${localhost}/user/username/${this.props.match.params.username}`)
+    axios.get(`${localhost}/user/username/${this.props.match.params.username}`)
       .then(r => {
         this.setState({ username: r.data.username });
       })

@@ -43,9 +43,7 @@ const ChangepassForm = () => {
     onSubmit: async values => {
       axios
         .put(
-          `${localhost}/user/changepass/${
-            jwt_decode(localStorage.usertoken).user._id
-          }`,
+          `${localhost}/user/changepass/${jwt_decode(localStorage.usertoken).user._id}`,
           {
             password: values.password,
             newPassword: values.newPassword
@@ -81,7 +79,6 @@ const ChangepassForm = () => {
           <form>
             <div className="grey-text">
               <MDBInput
-                id="md-form label"
                 label="Enter old password"
                 id="password"
                 name="password"

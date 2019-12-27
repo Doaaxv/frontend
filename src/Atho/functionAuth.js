@@ -6,9 +6,9 @@ import {localhost} from "../GlobalVars"
 export const register = (newuser)=>{
     console.log("inside funcAuth")
     
-    return axios.post(`${localhost}/user/register` ,newuser )
+    return axios.post(`${localhost}/user/register`,newuser )
 }
 // login 
 export const login = (user)=>{
-    return axios.post(`${localhost}/user/login` , user)
+    return axios.post(`${localhost}/user/login`, user)
 }

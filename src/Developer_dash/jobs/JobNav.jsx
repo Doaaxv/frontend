@@ -31,8 +31,7 @@ export default class JobNav extends Component {
   };
 
   componentDidMount = () => {
-    axios
-      .get(`${localhost}/job`)
+    axios.get(`${localhost}/job`)
       .then(items => {
         var temp = [];
         var assignedJobs = [];

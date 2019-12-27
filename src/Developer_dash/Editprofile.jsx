@@ -38,13 +38,11 @@ const EditForm = () => {
         username: values.username
       };
 
-      axios
-        .put(`${localhost}/user/changedetails/${formik.values.user._id}`, uUser)
+      axios.put(`${localhost}/user/changedetails/${formik.values.user._id}`, uUser)
         .then(res => {
           if (res.data.msg === "2") {
             alert("Successfully Updated");
-            axios
-              .post(`${localhost}/user/edit/token`, res.data.user)
+            axios.post(`${localhost}/user/edit/token`, res.data.user)
               .then(fes => {
                 localStorage.setItem("usertoken", fes.data);
                 window.location.reload();

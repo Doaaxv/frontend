@@ -29,18 +29,15 @@ export default function Portfolio(props) {
   const [userProjects, setUserProjects] = useState([]);
 
   useEffect(async () => {
-    await axios
-      .get(`${localhost}/user/username/${props.match.params.username}`)
+    await axios.get(`${localhost}/user/username/${props.match.params.username}`)
       .then(result => {
-        axios
-          .get(`${localhost}/project/developer/${result.data._id}`)
+        axios.get(`${localhost}/project/developer/${result.data._id}`)
           .then(projects => {
             setUserProjects(projects.data);
           })
           .catch(err => console.log(err));
 
-        axios
-          .get(`${localhost}/UserInfoRoutes/${result.data._id}`)
+        axios.get(`${localhost}/UserInfoRoutes/${result.data._id}`)
           .then(rr => {
             setUserInfoExra(rr.data[0]);
           })

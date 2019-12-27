@@ -7,8 +7,7 @@ import { Button, Card } from "react-bootstrap";
 export default class DevsCards extends Component {
   state = { user: null };
   componentDidMount = () => {
-    axios
-      .get(`${localhost}/user/${this.props.userId}`)
+    axios.get(`${localhost}/user/${this.props.userId}`)
       .then(result => {
         this.setState({ user: result.data });
       })
@@ -16,8 +15,7 @@ export default class DevsCards extends Component {
   };
 
   chooseDev = () => {
-    axios
-      .put(`${localhost}/job/developer/${this.props.job_id}`, {
+    axios.put(`${localhost}/job/developer/${this.props.job_id}`, {
         dev_id: this.props.userId
       })
       .then(result => {

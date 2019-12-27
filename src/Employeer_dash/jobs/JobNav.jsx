@@ -45,12 +45,7 @@ export default class JobNav extends Component {
   };
 
   componentDidMount = () => {
-    axios
-      .get(
-        `${localhost}/job//employer/${
-          jwt_decode(localStorage.usertoken).user._id
-        }`
-      )
+    axios.get(`${localhost}/job//employer/${jwt_decode(localStorage.usertoken).user._id}`)
       .then(items => {
         var requested = [];
         var unassigned = [];

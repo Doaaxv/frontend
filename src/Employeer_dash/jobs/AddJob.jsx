@@ -48,8 +48,7 @@ const AddJobForm = () => {
     },
     validate,
     onSubmit: async values => {
-      axios
-        .post(`${localhost}/job/create`, values)
+      axios.post(`${localhost}/job/create`, values)
         .then(result => {
           Swal.fire({
             position: "top-end",
